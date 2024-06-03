@@ -14,8 +14,21 @@ $dbName = $_ENV['DB_NAME'];
 $dbUser = $_ENV['DB_USER'];
 $dbPass = $_ENV['DB_PASS'];
 
-echo "Environment: $env\n";
-echo "Database Host: $dbHost\n";
-echo "Database Name: $dbName\n";
-echo "Database User: $dbUser\n";
-echo "Database Password: $dbPass\n";
+//create connection
+$connection = new mysqli($dbHost, $dbUser, $dbpass);
+
+//check connection
+if ($connection -> connection_error) {
+  die("connection faillure: " . $connection -> connection_error);
+}
+
+//Create new database
+$sql_querry = "CREATE DATABASE $dbName";
+
+if ($connection -> query($sql_querry) === TRUE) {
+  echo "Databse $dbName has been created";
+} else {
+  echo "Error: " . $connection -> error;
+}
+
+?>
