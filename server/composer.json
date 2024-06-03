@@ -1,6 +1,6 @@
 {
     "name": "johnabsolu/Movie-Theatre",
-    "description": "A brief description of your server project",
+    "description": "A movie Theatre full stack project for CSC-335",
     "require": {
         "vlucas/phpdotenv": "^5.6"
     },
