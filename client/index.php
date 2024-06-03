@@ -8,24 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <div class="navbar-left">
-                <a href="#home" class="logo">NMT Theatres </a>
-                <a href="#movies">Movie Selection</a>
-                <a href="#theatres">Find a Theatre</a>
-                <a href="#Food/Drinks">Food & Drinks</a>
-                <a href="#More"> More</a>
-            </div>
-            <div class="navbar-right">
-                <input type="text" placeholder="Search..">
-                <a href="#signin"><i class="fas fa-user-circle"></i> Sign In</a>
-                <a href="#joinnow" class="join-btn">Join Now</a>
-            </div>
-         
-        </div>
-    </header>
-
+    <?php include("includes/header.php") ?>
     <div class="container">
         <div class="content-container">
             <div class="featured-content"  style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-1.jpg');">
@@ -81,8 +64,7 @@
         <!-- Main content goes here -->
     </main>
 
-    <footer>
-        <!-- Footer content goes here -->
-    </footer>
+    <!-- Footer content goes here -->
+    <?php include("include/footer.php") ?>
 </body>
 </html>
