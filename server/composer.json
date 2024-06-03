@@ -1,5 +1,5 @@
 {
-    "name": "johnabsolu/server",
+    "name": "johnabsolu/Movie-Theatre",
     "description": "A brief description of your server project",
     "require": {
         "vlucas/phpdotenv": "^5.6"
