@@ -18,15 +18,15 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $title = $row["Title"]; // get the title of the movie
         $rating = $row["Rating"]; // get the rating 
-        $length = $row["Length"]; // get duration
+        $duration = $row["Length"]; // get duration
         $released = $row["Released_date"]; // get released date
         
         //create movie listing for each movies pulled
         echo "<div class='movie'>"; 
         echo "<img src='client/img/164729.jpg' alt='$title'>";
         echo "<div class='movie-info'>";
-        echo "<h3>The movie is $title</h3>";
-        echo "<p>$length</p>";
+        echo "<h3>$title</h3>";
+        echo "<p>$duration</p>";
         echo "<button>Get Tickets</button>";
         echo "</div>";
         echo "</div>";
