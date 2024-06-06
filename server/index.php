@@ -1,34 +1,26 @@
 <?php
-require 'vendor/autoload.php';
+  error_reporting(E_ALL);
+  // ini_set('display_errors', 1);
 
-use Dotenv\Dotenv;
-
-// Load .env file
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// Accessing environment variables
-$env = $_ENV['APP_ENV'];
-$dbHost = $_ENV['DB_HOST'];
-$dbName = $_ENV['DB_NAME'];
-$dbUser = $_ENV['DB_USER'];
-$dbPass = $_ENV['DB_PASS'];
+include "./config.php";
 
 //create connection
-$connection = new mysqli($dbHost, $dbUser, $dbPass);
+$connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
+
 
 //check connection
-if ($connection -> connection_error) {
-  die("connection faillure: " . $connection -> connection_error);
+if ($connection->connect_error) {
+  die("connection failed: " . $connection->connect_error);
 }
 
-//Create new database
-$sql_querry = "CREATE DATABASE $dbName";
-
-if ($connection -> query($sql_querry) === TRUE) {
-  echo "Databse $dbName has been created";
-} else {
-  echo "Error: " . $connection -> error;
+$sql = "SHOW DATABASES LIKE '$DB_NAME'";
+$result = $connection->query($sql);
+if ($result->num_rows == 0) {
+  $sql_querry = "CREATE DATABASE $DB_NAME";
+  if ($connection->query($sql_querry) === TRUE) {
+    echo "Database $DB_NAME has been created";
+  } else {
+    echo "Creating Database " . $connection->error;
+  }
 }
-
 ?>
