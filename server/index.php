@@ -15,7 +15,7 @@ $dbUser = $_ENV['DB_USER'];
 $dbPass = $_ENV['DB_PASS'];
 
 //create connection
-$connection = new mysqli($dbHost, $dbUser, $dbpass);
+$connection = new mysqli($dbHost, $dbUser, $dbPass);
 
 //check connection
 if ($connection -> connection_error) {
