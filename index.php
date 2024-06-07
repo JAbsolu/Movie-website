@@ -1,6 +1,6 @@
 <?php 
     include './server/config.php';
-    include './server/index.php';
+    include './server/dbconnect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
