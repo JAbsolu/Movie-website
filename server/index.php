@@ -15,6 +15,7 @@ if ($connection->connect_error) {
 
 $sql = "SHOW DATABASES LIKE '$DB_NAME'";
 $result = $connection->query($sql);
+
 if ($result->num_rows == 0) {
   $sql_querry = "CREATE DATABASE $DB_NAME";
   if ($connection->query($sql_querry) === TRUE) {
