@@ -1,8 +1,4 @@
 <?php
-
-include '../../server/config.php';
-include '../../server/index.php';
-
 // Make call to backend
 $new_connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
