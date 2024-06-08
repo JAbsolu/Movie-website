@@ -1,5 +1,5 @@
 {
-    "name": "johnabsolu/Movie-Theatre",
+    "name": "GreenTeam/Movie-Theatre",
     "description": "A movie Theatre full stack project for CSC-335",
     "require": {
         "vlucas/phpdotenv": "^5.6"
