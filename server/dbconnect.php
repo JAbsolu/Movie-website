@@ -1,8 +1,11 @@
 <?php
-  error_reporting(E_ALL);
-  // ini_set('display_errors', 1);
+// The following 2 codes bellow are for error checking, remove comments to debug
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 include "./config.php";
+include "./tables/movie.php";
+include "./tables/user.php";
 
 //create connection
 $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
