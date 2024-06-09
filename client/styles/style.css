@@ -1,269 +1,268 @@
-body, html {
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
-.header, .navbar {
-    background-color: #000; /* Black background for navbar */
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
     color: white;
-    padding: 5px 10px; /* Standard horizontal padding */
-    display: flex; /* Using Flexbox for layout */
-    justify-content: space-between; /* Pushes children to either end */
-    align-items: center; /* Centers items vertically */
+    font-family: "Sen", sans-serif;
+}
+
+.logo-container {
+    flex: 0 1 auto;
 }
 
 .logo {
-    font-size: 24px;
-    color: red; /* Similar to Cinemark's red logo */
-    text-decoration: none;
-}
-
-.navbar-left, .navbar-right {
-    display: flex;
-    align-items: center;
-}
-
-.navbar a {
-    color: white;
-    text-align: center;
-    padding: 10px 15px; /* Uniform padding for all links */
-    text-decoration: none;
-    font-size: 17px;
-}
-
-.navbar a:hover {
-    background-color: #ddd; /* Light grey for hover */
-    color: black; /* Black text on hover */
-}
-
-.account-btn {
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none; /* Ensures no underline on links */
-}
-
-.account-btn:hover {
-    background-color: white;
-    color: red;
-    border: 1px solid red; /* Adds a red border on hover */
-}
-
-
-input[type="text"] {
-    padding: 12px;
-    margin-top: 5px;  
-    margin-left: 20px;
-    font-size: 16px;
-    border: none; 
-    outline: none; 
-    background-color: #f3f3f3; 
-    color: #000; 
-    width: 200px; 
-    border-radius: 15px; 
-}
-
-input[type="text"]:focus {
-    background-color: #fff; /* Changes background to white on focus */
-    border: 2px solid red; /* Adds a red border on focus, matching the logo color */
-    border-radius: 15px; /* Maintains the rounded corners on focus */
-}
-
-input[type="text"]::placeholder {
-    color: #666; /* Light color for placeholder text */
-}
-
-.container{
-    background-color:#151515;
-    min-height: calc(100vh - 20px)
-}
-
-
-
-.featured-content{
-    height:40vh;
-    padding: 50px;
-}
-
-.featured-title{
-    width: 200px;
-}
-
-.featured-desc{
-    width: 500px;
-    color:lightgray;
-    margin: 30px 0;
-}
-
-.featured-button{
-    background-color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border:none;
-    outline:none;
-}
-
-.movie-list-title {
-    color: white;
     font-size: 30px;
-    padding: 5px 0; /* Updated padding to only be vertical */
-    position: relative; /* Set position to relative for pseudo-element positioning */
-    margin-left: 200px; /* Adjust this value as needed to move the title to the right */
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Center-align the items vertically */
-    justify-content: space-between; /* Align content to the start */
-    width: 100%;
+    color: #4dbf00;
+    margin-right: 20px;
 }
 
-.movie-list-title::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 1490px; /* Adjust width of the line */
-    background-color: white;
-    position: absolute;
-    left: 0;
-    bottom: -10px; /* Adjust vertical position of the line */
-}
-
-.movie-status {
-    white-space: nowrap;
-    margin-right:350px;
-    font-size: 16px;
-}
-
-.now-playing, .coming-soon {
-    color: #AAA; /* Light grey color for the labels */
-}
-
-.coming-soon {
-    margin-left: 10px; /* Space between 'Now Playing' and 'Coming Soon' */
-}
-
-
-.movie-list{
-    display:flex;
-    align-items: center;
-    height:300px;
-}
-
-.movie-list-item{
-    margin-right:30px;
-    position:relative;
-}
-
-
-.movie-list-item:hover .movie-list-item-img{
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
-}
-
-.movie-list-item:hover  .movie-list-item-title
-.movie-list-item:hover  .movie-list-item-desc
-.movie-list-item:hover  .movie-list-item-button{
-    opacity: 1;
-}
-
-
-.movie-list-item-img{
-    width: 270px;
-    height: 200px;
-    object-fit: cover;
-    transition: all 1s ease-in-out;
-}
-
-* p {
-    color:white
-}
-
-.movie-list-item-title{
-    background-color: #f0efef;
-    padding: 0 10px;
-    font-size: 32px;
-    font-weight: bold;
-    position:absolute;
-    top: 10%;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-}
-
-.movie-list-item-desc{
-    background-color: #ffffff;
-    padding: 10px;
-    font-size: 14px;
-    position:absolute;
-    top: 30%;
-    left: 50px;
-    width: 230px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-}
-
-.movie-list-item-button{
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    position:absolute;
-    bottom: 20px;
-    left: 50px;
-    opacity: 0;
-    transition: 1s all ease-in-out;
-
-}
-
-.movie-list-wrapper{
-    position:relative;
-}
-
-
-.movie-showcase {
+.menu-container {
+    flex: 1;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px;
-    background-color: #222; /* Dark background for better contrast */
+    justify-content: flex-start;
 }
 
-.movie {
-    width: 200px; /* Fixed width for consistency */
-    margin: 10px;
-    text-align: center; /* Center-aligns the content below the image */
-    color: white; /* Text color */
+.menu-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
-.movie img {
-    width: 100%; /* Makes the image fill the container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: Rounds the corners of the images */
-}
-
-.movie-info h3 {
-    margin: 5px 0;
-    font-size: 18px; /* Adjust font size according to design */
-}
-
-.movie-info p {
-    margin: 5px 0;
-    font-size: 16px; /* Smaller font size for duration */
-}
-
-.movie-info button {
-    padding: 8px 16px;
-    background-color: red; /* Matching the theme's accent color */
-    color: white;
-    border: none;
-    border-radius: 5px;
+.menu-list-item {
+    position: relative;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.movie-info button:hover {
-    background-color: darkred; /* Darken the button on hover for effect */
+.menu-list-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-list-item a:hover {
+    text-decoration: underline;
+}
+
+.menu-list-item.active {
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 10;
+    width: 300px;
+    color: black;
+}
+
+.menu-list-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-container i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.profile-link {
+    color: white;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    text-decoration: underline;
+}
+
+.banner-swiper-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.banner-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.banner-subtitle {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.banner-duration {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.banner-play-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.banner-play-btn i {
+    margin-right: 5px;
+}
+
+.section-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.showcase-swiper-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.showcase-swiper-container .swiper-wrapper {
+    display: flex;
+}
+
+.showcase-swiper-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.showcase-swiper-container .swiper-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.poster-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.poster-info .movie-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.poster-info .movie-length,
+.poster-info .movie-rating {
+    font-size: 14px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
