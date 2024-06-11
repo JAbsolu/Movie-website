@@ -23,12 +23,11 @@
     <div class="banner-swiper-container swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide bg-dark p-2 rounded-2">
-                <img src="client/img/Bad-boys-1.png" alt="Banner Image 1" class="banner-img">
+                <img src="client/img/Badboys.jpg" alt="Banner Image 1" class="banner-img">
                 <div class="banner-content">
                     <h2 class="banner-title">Bad Boys: Ride or Die</h2>
                     <p class="banner-subtitle">Miami's Finest Are Now Its Most Wanted</p>
                     <p class="banner-duration">1 HR 55 MIN</p>
-    
                 </div>
             </div>
             <div class="swiper-slide bg-dark p-2 rounded-2">
