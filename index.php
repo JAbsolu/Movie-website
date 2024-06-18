@@ -52,43 +52,45 @@
         </div>
     </div>
 
+    <!-- Movie Container -->
     <h2 class="section-title">Now Showcasing at Flakes</h2>
-    <div class="showcase-swiper-container swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide bg-dark p-2 rounded-2">
-                <img src="client/img/Bad Boys.png" alt="Movie Poster 1" class="poster-img">
-                <div class="poster-info">
-                    <p class="movie-title p-0 m-0">Bad Boys: Ride or Die</p>
-                    <p class="movie-length p-0 m-0">1 HR 55 MIN</p>
-                    <p class="movie-rating">R</p>
+     <div class="container">
+        <div class="row d-flex flex-row justify-content-start">
+            <div class="col-sm">
+                <img src="client/img/Bad Boys.png" alt="Movie Poster 1" class="poster-img" width="250px">
+                <div>
+                    <p class="p-0 m-0">Bad Boys: Ride or Die</p>
+                    <p class="p-0 m-0">1 HR 55 MIN</p>
+                    <p class="">R</p>
                 </div>
             </div>
-            <div class="swiper-slide bg-dark p-2 rounded-2">
-                <img src="client/img/Haikyu.png" alt="Movie Poster 2" class="poster-img">
-                <div class="poster-info">
-                    <p class="movie-title p-0 m-0">Haikyu!! The Dumpster Battle</p>
-                    <p class="movie-length p-0 m-0">1 HR 25 MIN</p>
-                    <p class="movie-rating">PG</p>
+            <div class="col-sm">
+                <img src="client/img/Haikyu.png" alt="Movie Poster 2" class="poster-img" width="250px">
+                <div>
+                    <p class="p-0 m-0">Haikyu!! The Dumpster Battle</p>
+                    <p class="p-0 m-0">1 HR 25 MIN</p>
+                    <p class="">PG</p>
                 </div>
             </div>
-            <div class="swiper-slide bg-dark p-2 rounded-2">
-                <img src="client/img/lg-furiosa-final-poster.png" alt="Movie Poster 3" class="poster-img">
-                <div class="poster-info">
-                    <p class="movie-title p-0 m-0">Furiosa: A Mad Max Saga</p>
-                    <p class="movie-length p-0 m-0">2 HR 30 MIN</p>
-                    <p class="movie-rating">PG-13</p>
+            <div class="col-sm">
+                <img src="client/img/lg-furiosa-final-poster.png" alt="Movie Poster 3" class="poster-img" width="250px">
+                <div>
+                    <p class="p-0 m-0">Furiosa: A Mad Max Saga</p>
+                    <p class="p-0 m-0">2 HR 30 MIN</p>
+                    <p class="">PG-13</p>
                 </div>
             </div>
-            <div class="swiper-slide bg-dark p-2 rounded-2">
-                <img src="client/img/The Garfield Movie.png" alt="Movie Poster 4" class="poster-img">
-                <div class="poster-info">
-                    <p class="movie-title p-0 m-0">The Garfield Movie</p>
-                    <p class="movie-length p-0 m-0">1 HR 40 MIN</p>
-                    <p class="movie-rating">G</p>
+            <div class="col-sm">
+                <img src="client/img/The Garfield Movie.png" alt="Movie Poster 4" class="poster-img" width="250px">
+                <div>
+                    <p class="p-0 m-0">The Garfield Movie</p>
+                    <p class="p-0 m-0">1 HR 40 MIN</p>
+                    <p class="">G</p>
                 </div>
             </div>
-            <!-- Add more slides as needed -->
+
         </div>
+     </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
