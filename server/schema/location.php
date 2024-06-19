@@ -19,7 +19,7 @@ $table_name = 'Location';
 $sql = "CREATE TABLE $table_name (
   Location_ID INT AUTO_INCREMENT PRIMARY KEY,
   Address_ID INT,
-  FOREIGN KEY (Address_ID) REFERENCES Address Address (Address_ID)
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
 )";
 
 //check if the table already exists

@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Gift_Card';
 
 $sql = "CREATE TABLE $table_name (
-  Gift_card_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Gift_Card_ID INT AUTO_INCREMENT PRIMARY KEY,
   Amount VARCHAR(50)
 )";
 

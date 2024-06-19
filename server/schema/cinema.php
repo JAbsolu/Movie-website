@@ -24,6 +24,7 @@ $sql = "CREATE TABLE $table_name (
   FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID)
 )";
 
+
 //check if the table already exists
 $is_exist = "SELECT COUNT(*) as count 
 FROM information_schema.tables 

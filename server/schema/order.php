@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Customer_Order';
 
 $sql = "CREATE TABLE $table_name (
-  Customer_Order_ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  Customer_Order_ID INT AUTO_INCREMENT PRIMARY KEY,
   Cust_ID INT,
   MovieID INT,
   Payment_ID INT,

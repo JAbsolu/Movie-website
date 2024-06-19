@@ -18,7 +18,7 @@ $table_name = 'Food';
 
 $sql = "CREATE TABLE $table_name (
   Food_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Food_name INT,
+  Food_name VARCHAR(255),
   price INT
 )";
 

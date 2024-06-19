@@ -20,17 +20,17 @@ $address_table = 'Address';
 $sql = "CREATE TABLE $table_name (
   Payment_ID INT AUTO_INCREMENT PRIMARY KEY,
   Payment_type VARCHAR(20),
-  Total DECIMAL(15),
+  Total DECIMAL(15, 2),
   Card_ending_num INT(5),
   Card_exp_month INT(2),
   Card_exp_year INT(4),
   Card_type INT(4),
   Transaction_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   Customer_Order_ID INT,
-  Gift_card_ID INT,
-  Address_ID INT,
   FOREIGN KEY (Customer_Order_ID) REFERENCES Customer_Order (Customer_Order_ID),
-  FOREIGN KEY (Gift_card_ID) REFERENCES Gift_Card (Gift_card_ID),
+  Gift_Card_ID INT,
+  FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID),
+  Address_ID INT,
   FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
 )";
 

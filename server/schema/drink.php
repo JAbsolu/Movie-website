@@ -18,9 +18,10 @@ $table_name = 'drink';
 
 $sql = "CREATE TABLE $table_name (
   drink_ID INT AUTO_INCREMENT PRIMARY KEY,
-  drink_name INT,
+  drink_name VARCHAR(255),
   price INT
 )";
+
 
 //check if the table already exists
 $is_exist = "SELECT COUNT(*) as count 

@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Movie';
 
 $sql = "CREATE TABLE $table_name (
-  MovieID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  MovieID INT AUTO_INCREMENT PRIMARY KEY,
   Title VARCHAR(30) NOT NULL,
   Genre VARCHAR(30) NOT NULL,
   ReleaseDate VARCHAR(50),

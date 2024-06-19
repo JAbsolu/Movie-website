@@ -28,6 +28,7 @@ $sql = "CREATE TABLE $table_name (
   FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID)
 )";
 
+
 //check if the table already exists
 $is_exist = "SELECT COUNT(*) as count 
 FROM information_schema.tables 
