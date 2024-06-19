@@ -37,10 +37,10 @@ include "schema/gift_card.php";
 include "schema/merch.php";
 include "schema/movie_room.php";
 include "schema/movie.php";
-include "schema/order.php";
-include "schema/payment.php";
-include "schema/reservation.php";
 include "schema/role.php";
+include "schema/payment.php";
+include "schema/order.php";
+include "schema/reservation.php";
 include "schema/ticket.php";
 
 ?>
