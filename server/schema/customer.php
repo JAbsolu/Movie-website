@@ -22,8 +22,8 @@ $sql = "CREATE TABLE $table_name (
   Email_address VARCHAR(100) NOT NULL UNIQUE,
   FirstName VARCHAR(50),
   LastName VARCHAR(50),
-  FOREIGN KEY (Address_ID) REFERENCES Address_ID,
-  RegistrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  Address_ID INT,
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
 )";
 
 //check if the table already exists
@@ -40,9 +40,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name" . $connection->error . "<br>";
     }
   }
 } else {

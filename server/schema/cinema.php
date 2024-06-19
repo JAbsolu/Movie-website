@@ -20,7 +20,8 @@ $sql = "CREATE TABLE $table_name (
   Cinema_ID INT AUTO_INCREMENT PRIMARY KEY,
   Cinema_name VARCHAR(50) NOT NULL UNIQUE,
   Password VARCHAR(255) NOT NULL,
-  FOREIGN KEY (Location_ID) REFERENCES Location_ID,
+  Location_ID INT,
+  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID)
 )";
 
 //check if the table already exists
@@ -37,9 +38,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name " . $connection->error . "<br>";
     }
   }
 } else {

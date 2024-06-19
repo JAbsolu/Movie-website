@@ -14,16 +14,13 @@ if ($connection->connect_error) {
   die("Connection failed: " . $connection->connect_error);
 }
 
-$table_name = 'Address';
+$table_name = 'Food';
 
 $sql = "CREATE TABLE $table_name (
-  Address_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Address_number INT(10),
-  Address VARCHAR(150),
-  City VARCHAR(50),
-  Zip_code INT(15)
+  Food_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Food_name INT,
+  price INT
 )";
-
 
 //check if the table already exists
 $is_exist = "SELECT COUNT(*) as count 

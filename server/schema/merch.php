@@ -14,16 +14,17 @@ if ($connection->connect_error) {
   die("Connection failed: " . $connection->connect_error);
 }
 
-$table_name = 'Address';
+$table_name = 'Merch';
 
 $sql = "CREATE TABLE $table_name (
-  Address_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Address_number INT(10),
-  Address VARCHAR(150),
-  City VARCHAR(50),
-  Zip_code INT(15)
+  Merch_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Merch_name VARCHAR(70),
+  Merch_price INT,
+  Merch_type INT,
+  Stock INT(5),
+  Merch_size ENUM('XL', 'L', 'M', 'S', 'XS'),
+  Address_Color ENUM('Rd', 'Bl', 'Grn', 'Ylw')
 )";
-
 
 //check if the table already exists
 $is_exist = "SELECT COUNT(*) as count 
@@ -41,7 +42,7 @@ if ($result->num_rows > 0) {
     if ($connection->query($sql) === TRUE) {
       echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: $table_name" . $connection->error . "<br>";
+      echo "Error creating table: $table_name -> " . $connection->error . "<br>";
     }
   }
 } else {

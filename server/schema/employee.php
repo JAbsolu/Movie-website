@@ -21,9 +21,10 @@ $sql = "CREATE TABLE $table_name (
   Employee_first_name VARCHAR(50),
   Employee_last_name VARCHAR(50),
   Employee_email_address VARCHAR(50),
-  Employee_email_address VARCHAR(50),
-  FOREIGN KEY (Role_ID) REFERENCES Role_ID,
-  FOREIGN KEY (Location_ID) REFERENCES Location_ID,
+  Role_ID INT,
+  Location_ID INT,
+  FOREIGN KEY (Role_ID) REFERENCES Role (Role_ID),
+  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID)
 )";
 
 //check if the table already exists
@@ -40,9 +41,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name" . $connection->error . "<br>";
     }
   }
 } else {

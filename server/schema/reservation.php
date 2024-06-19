@@ -17,12 +17,13 @@ if ($connection->connect_error) {
 $table_name = 'Reservation';
 
 $sql = "CREATE TABLE $table_name (
-  Reservation_ID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  Name VARCHAR(50) NOT NULL,
-  Time VARCHAR(30) NOT NULL,
-  Date VARCHAR(50),
-  Customer_ID VARCHAR(40),
-  FOREIGN KEY (Order_ID) REFERENCES Order_ID,
+  Reservation_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Reservation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  Cust_ID INT,
+  Customer_Order_ID INT,
+  FOREIGN KEY (Cust_ID) REFERENCES Customer (Cust_ID),
+  FOREIGN KEY (Customer_Order_ID) REFERENCES Customer_Order (Customer_Order_ID)
 )";
 
 //check if the table already exists
@@ -39,9 +40,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name --> " . $connection->error . "<br>";
     }
   }
 } else {

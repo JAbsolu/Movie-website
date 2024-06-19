@@ -1,5 +1,5 @@
 <?php
-
+// The following two lines are for error checking, remove comment to debug the file
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -14,15 +14,24 @@ if ($connection->connect_error) {
   die("Connection failed: " . $connection->connect_error);
 }
 
-$table_name = 'Order';
+$table_name = 'Customer_Order';
 
 $sql = "CREATE TABLE $table_name (
-  Order_ID INT AUTO_INCREMENT PRIMARY KEY,
-  FOREIGN KEY (Customer_ID) REFERENCES Customer_ID,
-  FOREIGN KEY (Movie_ID) REFERENCES Movie_ID,
-  FOREIGN KEY (Payment_ID) REFERENCES Payment_ID,
-  FOREIGN KEY (Gift_Card_ID) REFERENCES Location_ID,
-  FOREIGN KEY (Merch_ID) REFERENCES Merch_ID,
+  Customer_Order_ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  Cust_ID INT,
+  MovieID INT,
+  Payment_ID INT,
+  Gift_card_ID INT,
+  Merch_ID INT,
+  Address_ID INT,
+  Ticket_ID INT,
+  FOREIGN KEY (Cust_ID) REFERENCES Customer (Cust_ID),
+  FOREIGN KEY (MovieID) REFERENCES Movie (MovieID),
+  FOREIGN KEY (Payment_ID) REFERENCES Payment (Payment_ID),
+  FOREIGN KEY (Gift_card_ID) REFERENCES Gift_Card (Gift_card_ID),
+  FOREIGN KEY (Merch_ID) REFERENCES Merch (Merch_ID),
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID),
+  FOREIGN KEY (Ticket_ID) REFERENCES Ticket (Ticket_ID)
 )";
 
 //check if the table already exists
@@ -39,9 +48,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name --> " . $connection->error . "<br>";
     }
   }
 } else {
@@ -49,3 +58,6 @@ if ($result->num_rows > 0) {
 }
 
 ?>
+
+
+

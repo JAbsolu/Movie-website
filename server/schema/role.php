@@ -18,7 +18,7 @@ $table_name = 'Role';
 
 $sql = "CREATE TABLE $table_name (
   Role_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Role_name VARCHAR(50),
+  Role_name VARCHAR(50)
 )";
 
 //check if the table already exists
@@ -35,9 +35,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name" . $connection->error . "<br>";
     }
   }
 } else {

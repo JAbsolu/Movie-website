@@ -18,10 +18,14 @@ $table_name = 'Ticket';
 
 $sql = "CREATE TABLE $table_name (
   Ticket_ID INT AUTO_INCREMENT PRIMARY KEY,
-  FOREIGN KEY (Customer_ID) REFERENCES Customer_ID,
-  FOREIGN KEY (Location_ID) REFERENCES Location_ID,
-  FOREIGN KEY (Cinema_ID) REFERENCES Cinema_ID,
-  FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card_ID,
+  Customer_ID INT,
+  Location_ID INT,
+  Cinema_ID INT,
+  Gift_Card_ID INT,
+  FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
+  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID),
+  FOREIGN KEY (Cinema_ID) REFERENCES Cinema (Cinema_ID),
+  FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID)
 )";
 
 //check if the table already exists
@@ -38,9 +42,9 @@ if ($result->num_rows > 0) {
       echo "Table $table_name exists.<br>";
   } else {
     if ($connection->query($sql) === TRUE) {
-      echo "Table $table_name created successfully";
+      echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: " . $connection->error;
+      echo "Error creating table: $table_name --> " . $connection->error . "<br>";
     }
   }
 } else {
