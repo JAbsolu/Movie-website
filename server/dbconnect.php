@@ -4,8 +4,19 @@
 // ini_set('display_errors', 1);
 
 include "./config.php";
-include "./tables/movie.php";
-include "./tables/user.php";
+include "./schema/address.php";
+include "./schema/cinema.php";
+include "./schema/customer.php";
+include "./schema/employee.php";
+include "./schema/gift_card.php";
+include "./schema/location.php";
+include "./schema/movie_room.php";
+include "./schema/movie.php";
+include "./schema/order.php";
+include "./schema/payment.php";
+include "./schema/reservation.php";
+include "./schema/role.php";
+include "./schema/ticket.php";
 
 //create connection
 $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
