@@ -1,4 +1,4 @@
-<?php include "server/config.php"; ?>
+<?php include "server/connect/config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +13,8 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>Movie Theatre</title>
+    <script src="client/scripts/index.js" defer></script>
+    <title>Flakes</title>
 </head>
 
 <body class="text-light" style="background: #000;">
@@ -107,27 +108,6 @@
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        var bannerSwiper = new Swiper('.banner-swiper-container', {
-            slidesPerView: 1,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-            },
-        });
-
-        var showcasingSwiper = new Swiper('.showcase-swiper-container', {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-            },
-        });
-
-
-
-    </script>
 </body>
 
 </html>
