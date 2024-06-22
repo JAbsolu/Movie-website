@@ -1,5 +1,5 @@
 <?php
-include "connect/config.php";
+include "../connect/config.php";
 $error = '';
 session_start();
 
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Movie Theater Admin</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../client/styles/style.css" rel="stylesheet">
+    <link href="../../client/styles/style.css" rel="stylesheet">
 </head>
 <body class="bg-black">
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
@@ -71,7 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php echo $error; ?>
                         </div>
                     <?php endif; ?>
-                    <button type="submit" class="btn bg-blue btn-block"><span class="text-light">Log in</span></button>
+                    <button type="submit" class="btn bg-blue btn-block mb-3"><span class="text-light">Sign in</span></button>
+                    <span>
+                        New Admin?
+                        <a class="color-blue" href="signup.php">create account</a>
+                    </span>
                 </form>
             </div>
         </div>

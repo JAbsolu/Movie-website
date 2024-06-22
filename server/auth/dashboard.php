@@ -1,5 +1,5 @@
 <?php
-include "connect/config.php";
+include "../connect/config.php";
 // Start the session
 session_start();
 if(!isset($_SESSION['Username'])){
