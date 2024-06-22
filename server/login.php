@@ -43,12 +43,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div style="position:relative;left:800px;top:400px;border:solid;width:300px;">
-    <form action="login.php" method="POST" style="position:relative;left:20px;">
-        <p>Please Log in:</p>
-        <p>Username <input type="text" name="username"/> </p>
-        <p>Password <input type="password" name="password"/> </p>
-        <p><input type="submit" value="Log in"/></p>
-				<?php echo "<p style='color: red'>$error</p>" ?>
-    </form>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Movie Theater Admin</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../client/styles/style.css" rel="stylesheet">
+</head>
+<body class="bg-black">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card" style="width: 400px;">
+            <div class="card-body">
+                <h3 class="card-title text-center ">Please Log in</h3>
+                <form action="login.php" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <?php if (!empty($error)): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error; ?>
+                        </div>
+                    <?php endif; ?>
+                    <button type="submit" class="btn bg-blue btn-block"><span class="text-light">Log in</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
