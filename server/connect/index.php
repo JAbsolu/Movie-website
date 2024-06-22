@@ -30,6 +30,7 @@ if ($result->num_rows == 0) {
   }
 }
 
+include "../schema/user.php";
 include "../schema/address.php";
 include "../schema/location.php";
 include "../schema/customer.php";
@@ -40,7 +41,6 @@ include "../schema/gift_card.php";
 include "../schema/merch.php";
 include "../schema/movie_room.php";
 include "../schema/movie.php";
-include "../schema/user.php";
 include "../schema/role.php";
 include "../schema/payment.php";
 include "../schema/order.php";
