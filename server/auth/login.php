@@ -52,8 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../client/styles/style.css" rel="stylesheet">
 </head>
-<body class="bg-black">
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<body>
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+        <h3 class="fw-bold color-blue mb-3">Flakes</h3>
         <div class="card" style="width: 400px;">
             <div class="card-body">
                 <h3 class="card-title text-center ">Please Log in</h3>
