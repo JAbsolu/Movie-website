@@ -1,3 +1,15 @@
+.bg-blue {
+    background-color: #0073E9;
+}
+
+.color-blue {
+    color: #0073E9;
+}
+
+.bg-black {
+    background-color: #0e1214;
+}
+
 * {
     margin: 0;
     padding: 0;

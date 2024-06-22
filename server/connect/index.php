@@ -40,6 +40,7 @@ include "../schema/gift_card.php";
 include "../schema/merch.php";
 include "../schema/movie_room.php";
 include "../schema/movie.php";
+include "../schema/user.php";
 include "../schema/role.php";
 include "../schema/payment.php";
 include "../schema/order.php";
