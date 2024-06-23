@@ -19,7 +19,7 @@
 </head>
 
 <body class="text-light" style="background: #000;">
-    <?php include "client/includes/nav.php" ?>
+<?php include "client/includes/nav.php" ?>
 
     <!-- Banner Slider -->
     <div class="container p-0 banner-swiper-container swiper-container">
