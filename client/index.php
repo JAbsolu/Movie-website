@@ -1,4 +1,4 @@
 <?php 
 session_start();
-header("Location: ../home.php");
+header("location: ../home.php");
 ?>
