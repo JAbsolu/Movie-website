@@ -18,14 +18,14 @@ $table_name = 'Movie';
 
 $sql = "CREATE TABLE $table_name (
   MovieID INT AUTO_INCREMENT PRIMARY KEY,
-  Title VARCHAR(30) NOT NULL,
-  Genre VARCHAR(30) NOT NULL,
-  ReleaseDate VARCHAR(50),
+  Title VARCHAR(100) NOT NULL,
+  Genre VARCHAR(100) NOT NULL,
+  ReleaseDate VARCHAR(100),
   Duration VARCHAR(40),
-  Showtime VARCHAR(40),
-  Description VARCHAR(40),
-  Language VARCHAR(50),
-  ImageURL VARCHAR(500)
+  Showtime VARCHAR(100),
+  Description VARCHAR(3000),
+  Language VARCHAR(100),
+  ImageURL VARCHAR(2000)
 )";
 
 //check if the table already exists

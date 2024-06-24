@@ -19,7 +19,6 @@ $table_name = 'Cinema';
 $sql = "CREATE TABLE $table_name (
   Cinema_ID INT AUTO_INCREMENT PRIMARY KEY,
   Cinema_name VARCHAR(50) NOT NULL UNIQUE,
-  Password VARCHAR(255) NOT NULL,
   Location_ID INT,
   FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID)
 )";
