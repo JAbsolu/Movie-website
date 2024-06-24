@@ -41,9 +41,30 @@ if ($result->num_rows > 0) {
 }
 
 $sql->close();
-$conn->close();
+
+//create query
+$sql = "SHOW TABLES";
+$result = $conn->query($sql);
+
+//create an arrays to store tables
+$tables = [];
+
+if ($result->num_rows > 0) {
+    $i = 0;
+    while ($row = $result->fetch_array()) {
+        $table = $row[0];
+        $tables[] = $table;
+    }
+}
+
+function getTables($table, $connection) {
+    $sql = "SELECT * FROM $table";
+    $result = $connection->query($sql);
+    return $result;
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,152 +76,374 @@ $conn->close();
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src='script.js' defer></script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="dashboard.php">Admin Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">View Data</a>
-                </li>
-            </ul>
-            <!-- List to sign o -->
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link profile" href="dashboard.php">
-                        <?php echo $user; ?>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="logout.php">Sign out</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="dashboard.php">Flakes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="dashboard.php">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../client" target="_blank">View Site</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="dashboard.php" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <?php echo htmlspecialchars($user) ?>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="logout.php">Sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
     <div class="container mt-5">
-        <h1 class="mb-4">Start Managing Movies</h1>
-        
+        <h1 class="mb-4 color-blue"> Welcome to your dashboard <?php echo htmlspecialchars($user)?></h1>
         <!-- Add Movie Form -->
         <div class="card mb-4">
             <div class="card-header">
-                Add Movie
-            </div>
-            <div class="card-body">
-                <form id="addMovieForm">
-                    <div class="form-group">
-                        <label for="movieTitle">Title</label>
-                        <input type="text" class="form-control" id="movieTitle" placeholder="Enter movie title" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="movieGenre">Genre</label>
-                        <input type="text" class="form-control" id="movieGenre" placeholder="Enter movie genre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="movieDuration">Duration (mins)</label>
-                        <input type="number" class="form-control" id="movieDuration" placeholder="Enter movie duration" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Movie</button>
-                </form>
+                <p class="table_list">Manage Tables</p>
+                <!-- PHP -->
+                <?php
+
+                    print (
+                        "<div class='d-flex gap-3 flex-wrap mt-3'>
+                        "); 
+                    foreach($tables as $table) {
+                        echo  "<button class=' py-1 px-3 table-btn btn bg-dark text-light' type='button' data-table='$table'>$table</button>";
+                    }
+                    echo "</div>";
+                ?>
             </div>
         </div>
+        <div class="card-body">
+                <form id="dynamicForm" style="display:none;">
+                    <!-- Dynamic form content will be inserted here based on the selected table -->
+                </form>
+            </div>
 
-        <!-- Movies Table -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Duration</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody id="moviesTableBody">
-                <!-- Movies will be dynamically inserted here -->
-            </tbody>
-        </table>
+        <?php
+            $sql = "SELECT * FROM User";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+            echo "<table class='mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col'>User ID</th>";
+                echo "<th scope='col'>First name</th>";
+                echo "<th scope='col'>Last name</th>";
+                echo "<th scope='col'>Username</th>";
+                echo "<th scope='col'>User email address</th>";
+                while ($row = $result->fetch_assoc()) {
+                    $user_id = $row['User_ID'];
+                    $first_name = $row['User_first_name'];
+                    $last_name = $row['User_last_name'];
+                    $username = $row['Username'];
+                    $user_email_address = $row['User_email_address'];
+                    $user_password = $row['User_password'];
+                    
+
+                    echo "<tr>";
+                    echo "<td scope='col'>$user_id</th>";
+                    echo "<td scope='col'>$first_name</th>";
+                    echo "<td scope='col'>$last_name</th>";
+                    echo "<td scope='col'>$username</th>";
+                    echo "<td scope='col'>$user_email_address</th>";
+                    echo "</tr>";
+                }
+                echo " </tr></thead><tbody id='TableBody'></tbody></table>";
+            }
+            $sql = "SELECT * FROM Movie";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+            echo "<table class='mt-4 mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col'>Movie ID</th>";
+                echo "<th scope='col'>Movie Title</th>";
+                echo "<th scope='col'>Movie Genre</th>";
+                echo "<th scope='col'>Released date</th>";
+                echo "<th scope='col'>Movie Duration</th>";
+                while ($row = $result->fetch_assoc()) {
+                    $movie_id = $row['MovieID'];
+                    $title = $row['Title'];
+                    $genre = $row['Genre'];
+                    $released = $row['ReleaseDate'];
+                    $duration = $row['Duration'];
+                    // $user_password = $row['User_password'];
+                    
+
+                    echo "<tr>";
+                    echo "<td scope='col'>$movie_id</th>";
+                    echo "<td scope='col'>$title</th>";
+                    echo "<td scope='col'>$genre</th>";
+                    echo "<td scope='col'>$released</th>";
+                    echo "<td scope='col'>$duration</th>";
+                    echo "</tr>";
+                }
+                echo " </tr></thead><tbody id='TableBody'></tbody></table>";
+            }
+        ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script>
-        let movies = [];
-        let movieId = 0;
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const tableList = document.querySelector('.table_list');
+            let tables = document.querySelectorAll('.table-btn');
+            const dynamicForm = document.querySelector('#dynamicForm');
 
-        // Add Movie
-        $('#addMovieForm').on('submit', function (e) {
-            e.preventDefault();
-            const title = $('#movieTitle').val();
-            const genre = $('#movieGenre').val();
-            const duration = $('#movieDuration').val();
+            tables.forEach((table) => {
+                table.addEventListener('click', function() {
+                    const tableName = table.getAttribute('data-table');
+                    sessionStorage.setItem('Current_table', `Manage Table: ${tableName}`);
+                    tableList.textContent = `Manage Table: ${tableName}`;
+                    
+                    // Show the form
+                    dynamicForm.style.display = 'block';
 
-            movies.push({ id: ++movieId, title, genre, duration });
-            renderMoviesTable();
-            $('#addMovieForm')[0].reset();
-        });
+                    // Clear existing form content
+                    dynamicForm.innerHTML = '';
 
-        // Render Movies Table
-        function renderMoviesTable() {
-            const moviesTableBody = $('#moviesTableBody');
-            moviesTableBody.empty();
-
-            movies.forEach(movie => {
-                moviesTableBody.append(`
-                    <tr>
-                        <th scope="row">${movie.id}</th>
-                        <td>${movie.title}</td>
-                        <td>${movie.genre}</td>
-                        <td>${movie.duration}</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" onclick="editMovie(${movie.id})">Edit</button>
-                            <button class="btn btn-danger btn-sm" onclick="deleteMovie(${movie.id})">Delete</button>
-                        </td>
-                    </tr>
-                `);
-            });
-        }
-
-        // Edit Movie
-        function editMovie(id) {
-            const movie = movies.find(m => m.id === id);
-            if (movie) {
-                $('#movieTitle').val(movie.title);
-                $('#movieGenre').val(movie.genre);
-                $('#movieDuration').val(movie.duration);
-                $('#addMovieForm').off('submit').on('submit', function (e) {
-                    e.preventDefault();
-                    movie.title = $('#movieTitle').val();
-                    movie.genre = $('#movieGenre').val();
-                    movie.duration = $('#movieDuration').val();
-                    renderMoviesTable();
-                    $('#addMovieForm')[0].reset();
-                    $('#addMovieForm').off('submit').on('submit', function (e) {
-                        e.preventDefault();
-                        const title = $('#movieTitle').val();
-                        const genre = $('#movieGenre').val();
-                        const duration = $('#movieDuration').val();
-
-                        movies.push({ id: ++movieId, title, genre, duration });
-                        renderMoviesTable();
-                        $('#addMovieForm')[0].reset();
-                    });
+                    // Add form fields based on table name
+                    if (tableName === 'Cinema') {
+                        dynamicForm.innerHTML = `
+                            <form id='cinemaForm' method='post' action='insert_cinema.php'>
+                                <div class='form-group'>
+                                    <label for='cinemaName'>Cinema Name</label>
+                                    <input type='text' class='form-control' id='cinemaName' name='cinemaName' placeholder='Enter cinema name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='password'>Password</label>
+                                    <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='locationId'>Location ID</label>
+                                    <input type='number' class='form-control' id='locationId' name='locationId' placeholder='Enter location ID' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Cinema</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Movie') {
+                        dynamicForm.innerHTML = `
+                            <form id='movieForm' method='post' action='insert_movie.php'>
+                                <div class='form-group'>
+                                    <label for='movieTitle'>Title</label>
+                                    <input type='text' class='form-control' id='movieTitle' name='movieTitle' placeholder='Enter movie title' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='movieGenre'>Genre</label>
+                                    <input type='text' class='form-control' id='movieGenre' name='movieGenre' placeholder='Enter movie genre' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='releasedDate'>Released Date</label>
+                                    <input type='date' class='form-control' id='releasedDate' name='releasedDate' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='movieDuration'>Duration (mins)</label>
+                                    <input type='number' class='form-control' id='movieDuration' name='movieDuration' placeholder='Enter movie duration' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='showtime'>Showtime</label>
+                                    <input type='text' class='form-control' id='showtime' name='showtime' placeholder='Enter showing times' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='description'>Description</label>
+                                    <textarea class='form-control' id='description' name='description' placeholder='Enter movie description' required></textarea>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='language'>Language</label>
+                                    <input type='text' class='form-control' id='language' name='language' placeholder='Enter movie language' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='fileToUpload'>Select image to upload:</label><br>
+                                    <input type='file' name='fileToUpload' id='fileToUpload'>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Address') {
+                        dynamicForm.innerHTML = `
+                            <form id='addressForm' method='post' action='insert_address.php'>
+                                <div class='form-group'>
+                                    <label for='addressNumber'>Address Number</label>
+                                    <input type='text' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='address'>Address</label>
+                                    <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='city'>City</label>
+                                    <input type='text' class='form-control' id='city' name='city' placeholder='Enter city' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='zipCode'>Zip Code</label>
+                                    <input type='text' class='form-control' id='zipCode' name='zipCode' placeholder='Enter zip code' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Address</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Customer') {
+                        dynamicForm.innerHTML = `
+                            <form id='customerForm' method='post' action='insert_customer.php'>
+                                <div class='form-group'>
+                                    <label for='username'>Username</label>
+                                    <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='password'>Password</label>
+                                    <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='email'>Email Address</label>
+                                    <input type='email' class='form-control' id='email' name='email' placeholder='Enter email address' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='firstName'>First Name</label>
+                                    <input type='text' class='form-control' id='firstName' name='firstName' placeholder='Enter first name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='lastName'>Last Name</label>
+                                    <input type='text' class='form-control' id='lastName' name='lastName' placeholder='Enter last name' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Customer</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Food') {
+                        dynamicForm.innerHTML = `
+                            <form id='foodForm' method='post' action='insert_food.php'>
+                                <div class='form-group'>
+                                    <label for='foodName'>Food Name</label>
+                                    <input type='text' class='form-control' id='foodName' name='foodName' placeholder='Enter food name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='price'>Price</label>
+                                    <input type='number' class='form-control' id='price' name='price' placeholder='Enter price' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Food</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Gift_Card') {
+                        dynamicForm.innerHTML = `
+                            <form id='giftCardForm' method='post' action='insert_giftcard.php'>
+                                <div class='form-group'>
+                                    <label for='amount'>Amount</label>
+                                    <input type='number' class='form-control' id='amount' name='amount' placeholder='Enter amount' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Gift Card</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Merch') {
+                        dynamicForm.innerHTML = `
+                            <form id='merchForm' method='post' action='insert_merch.php'>
+                                <div class='form-group'>
+                                    <label for='merchName'>Merch Name</label>
+                                    <input type='text' class='form-control' id='merchName' name='merchName' placeholder='Enter merch name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='merchPrice'>Merch Price</label>
+                                    <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='merchType'>Merch Type</label>
+                                    <input type='text' class='form-control' id='merchType' name='merchType' placeholder='Enter merch type' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='stock'>Stock</label>
+                                    <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='size'>Size</label>
+                                    <input type='text' class='form-control' id='size' name='size' placeholder='Enter size'>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='color'>Color</label>
+                                    <input type='text' class='form-control' id='color' name='color' placeholder='Enter color'>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Movie_Room') {
+                        dynamicForm.innerHTML = `
+                            <form id='movieRoomForm' method='post' action='insert_movie_room.php'>
+                                <div class='form-group'>
+                                    <label for='capacity'>Capacity</label>
+                                    <input type='text' class='form-control' id='capacity' name='capacity' placeholder='Enter capacity' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='available'>Available?</label>
+                                    <input type='text' class='form-control' id='available' name='available' placeholder='Enter available' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='cinemaID'>Cinema ID</label>
+                                    <input type='text' class='form-control' id='cinemaID' name='cinemaID' placeholder='Enter cinema ID' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Location') {
+                        dynamicForm.innerHTML = `
+                            <form id='LocationForm' method='post' action='insert_address.php'>
+                                <div class='form-group'>
+                                    <label for='address_ID'>Address ID</label>
+                                    <input type='text' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add Location</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'Role') {
+                        dynamicForm.innerHTML = `
+                            <form id='roleForm' method='post' action='insert_role.php'>
+                                <div class='form-group'>
+                                    <label for='role'>Role</label>
+                                    <input type='text' class='form-control' id='role' name='role' placeholder='Enter role' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add role</button>
+                            </form>
+                        `;
+                    } else if (tableName === 'User') {
+                        dynamicForm.innerHTML = `
+                            <form id='userForm' method='post' action='insert_user.php'>
+                                <div class='form-group'>
+                                    <label for='first_name'>First name</label>
+                                    <input type='text' class='form-control' id='first_name' name='first_name' placeholder='Enter first name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='last_name'>Last name</label>
+                                    <input type='text' class='form-control' id='last_name' name='last_name' placeholder='Enter last name' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='username'>Username</label>
+                                    <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='email_address'>Email address</label>
+                                    <input type='text' class='form-control' id='email_address' name='email_address' placeholder='Enter email address' required>
+                                </div>
+                                <div class='form-group'>
+                                    <label for='password'>Password</label>
+                                    <input type='text' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                                </div>
+                                <button type='submit' class='mt-2 btn btn-primary'>Add user</button>
+                            </form>
+                        `;
+                    }
                 });
+            });
+            // Load current table on DOM loaded
+            const currentTable = sessionStorage.getItem('Current_table');
+            if (currentTable) {
+                tableList.textContent = currentTable;
+                dynamicForm.style.display = 'block';
             }
-        }
-
-        // Delete Movie
-        function deleteMovie(id) {
-            movies = movies.filter(movie => movie.id !== id);
-            renderMoviesTable();
-        }
+        });
     </script>
+    <?php $conn->close() ?>
 </body>
 </html>
