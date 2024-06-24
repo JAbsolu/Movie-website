@@ -7,9 +7,11 @@
 session_start();
 // Remove all session variables
 if(isset($_SESSION['Username'])){
-  header("location: dashboard.php");
-  die();
+  header("location: server/auth/dashboard.php");
 }
+
+
+
 session_unset();
 // Destroy the session
 session_destroy();
