@@ -6,12 +6,14 @@
  */
 session_start();
 // Remove all session variables
-if(isset($_SESSION['Username'])){
+if(isset($_SESSION['Username']) && $_SESSION['Username'] === true){
   header("location: auth/dashboard.php");
   die();
+} else {
+  session_unset();
+  // Destroy the session
+  session_destroy();
+  header('location: auth/login.php');
 }
-session_unset();
-// Destroy the session
-session_destroy();
-header('location: auth/login.php');
+
 ?>
