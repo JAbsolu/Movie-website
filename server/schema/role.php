@@ -17,8 +17,9 @@ if ($connection->connect_error) {
 $table_name = 'Role';
 
 $sql = "CREATE TABLE $table_name (
-  Role_ID INT AUTO_INCREMENT PRIMARY KEY,
-  Role_name VARCHAR(50)
+  Role_ID INT(6) NOT NULL AUTO_INCREMENT, 
+  Role_name VARCHAR(50),
+  PRIMARY KEY (Role_ID)
 )";
 
 //check if the table already exists

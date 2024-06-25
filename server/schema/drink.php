@@ -17,9 +17,10 @@ if ($connection->connect_error) {
 $table_name = 'drink';
 
 $sql = "CREATE TABLE $table_name (
-  drink_ID INT AUTO_INCREMENT PRIMARY KEY,
+  drink_ID INT(6) NOT NULL AUTO_INCREMENT, 
   drink_name VARCHAR(255),
-  price INT
+  price INT,
+  PRIMARY KEY (drink_ID)
 )";
 
 

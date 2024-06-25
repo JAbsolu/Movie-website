@@ -17,9 +17,10 @@ if ($connection->connect_error) {
 $table_name = 'Location';
 
 $sql = "CREATE TABLE $table_name (
-  Location_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Location_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Address_ID INT,
-  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID),
+  PRIMARY KEY (Location_ID)
 )";
 
 //check if the table already exists

@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Movie';
 
 $sql = "CREATE TABLE $table_name (
-  MovieID INT AUTO_INCREMENT PRIMARY KEY,
+  MovieID INT(6) NOT NULL AUTO_INCREMENT, 
   Title VARCHAR(100) NOT NULL,
   Genre VARCHAR(100) NOT NULL,
   ReleaseDate VARCHAR(100),
@@ -25,7 +25,8 @@ $sql = "CREATE TABLE $table_name (
   Showtime VARCHAR(100),
   Description VARCHAR(3000),
   Language VARCHAR(100),
-  ImageURL VARCHAR(2000)
+  ImageURL VARCHAR(2000),
+  PRIMARY KEY (MovieID)
 )";
 
 //check if the table already exists

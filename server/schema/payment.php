@@ -18,7 +18,7 @@ $table_name = 'Payment';
 $address_table = 'Address';
 
 $sql = "CREATE TABLE $table_name (
-  Payment_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Payment_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Payment_type VARCHAR(20),
   Total DECIMAL(15, 2),
   Card_ending_num INT(5),
@@ -31,7 +31,8 @@ $sql = "CREATE TABLE $table_name (
   Gift_Card_ID INT,
   FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID),
   Address_ID INT,
-  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID),
+  PRIMARY KEY (Payment_ID)
 )";
 
 //check if the table already exists

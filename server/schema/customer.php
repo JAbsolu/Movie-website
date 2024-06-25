@@ -16,14 +16,15 @@ if ($connection->connect_error) {
 $table_name = 'Customer';
 
 $sql = "CREATE TABLE $table_name (
-  Cust_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Cust_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Username VARCHAR(50) NOT NULL UNIQUE,
   Password VARCHAR(255) NOT NULL,
   Email_address VARCHAR(100) NOT NULL UNIQUE,
   FirstName VARCHAR(50),
   LastName VARCHAR(50),
   Address_ID INT,
-  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID)
+  FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID),
+  PRIMARY KEY (Cust_ID)
 )";
 
 //check if the table already exists

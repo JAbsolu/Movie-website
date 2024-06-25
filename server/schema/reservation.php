@@ -17,13 +17,14 @@ if ($connection->connect_error) {
 $table_name = 'Reservation';
 
 $sql = "CREATE TABLE $table_name (
-  Reservation_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Reservation_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Reservation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   Reservation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   Cust_ID INT,
   Customer_Order_ID INT,
   FOREIGN KEY (Cust_ID) REFERENCES Customer (Cust_ID),
-  FOREIGN KEY (Customer_Order_ID) REFERENCES Customer_Order (Customer_Order_ID)
+  FOREIGN KEY (Customer_Order_ID) REFERENCES Customer_Order (Customer_Order_ID),
+  PRIMARY KEY (Reservation_ID)
 )";
 
 //check if the table already exists

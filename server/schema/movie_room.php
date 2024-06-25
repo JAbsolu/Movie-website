@@ -17,11 +17,12 @@ if ($connection->connect_error) {
 $table_name = 'Movie_Room';
 
 $sql = "CREATE TABLE $table_name (
-  Movie_room_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Movie_room_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Capacity INT(3),
   Available BOOLEAN,
   Cinema_ID INT,
-  FOREIGN KEY (Cinema_ID) REFERENCES Cinema (Cinema_ID)
+  FOREIGN KEY (Cinema_ID) REFERENCES Cinema (Cinema_ID),
+  PRIMARY KEY (Movie_room_ID)
 )";
 
 //check if the table already exists

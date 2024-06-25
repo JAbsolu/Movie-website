@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Ticket';
 
 $sql = "CREATE TABLE $table_name (
-  Ticket_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Ticket_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Customer_ID INT,
   Location_ID INT,
   Cinema_ID INT,
@@ -25,7 +25,8 @@ $sql = "CREATE TABLE $table_name (
   FOREIGN KEY (Customer_ID) REFERENCES Customer (Customer_ID),
   FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID),
   FOREIGN KEY (Cinema_ID) REFERENCES Cinema (Cinema_ID),
-  FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID)
+  FOREIGN KEY (Gift_Card_ID) REFERENCES Gift_Card (Gift_Card_ID),
+  PRIMARY KEY (Ticket_ID)
 )";
 
 

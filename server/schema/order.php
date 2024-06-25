@@ -17,7 +17,7 @@ if ($connection->connect_error) {
 $table_name = 'Customer_Order';
 
 $sql = "CREATE TABLE $table_name (
-  Customer_Order_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Customer_Order_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Cust_ID INT,
   MovieID INT,
   Payment_ID INT,
@@ -31,7 +31,8 @@ $sql = "CREATE TABLE $table_name (
   FOREIGN KEY (Gift_card_ID) REFERENCES Gift_Card (Gift_card_ID),
   FOREIGN KEY (Merch_ID) REFERENCES Merch (Merch_ID),
   FOREIGN KEY (Address_ID) REFERENCES Address (Address_ID),
-  FOREIGN KEY (Ticket_ID) REFERENCES Ticket (Ticket_ID)
+  FOREIGN KEY (Ticket_ID) REFERENCES Ticket (Ticket_ID),
+  PRIMARY KEY (Customer_Order_ID)
 )";
 
 //check if the table already exists

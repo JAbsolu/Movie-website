@@ -17,12 +17,13 @@ if ($connection->connect_error) {
 $table_name = 'User';
 
 $sql = "CREATE TABLE $table_name (
-  User_ID INT AUTO_INCREMENT PRIMARY KEY,
+  User_ID INT(6) NOT NULL AUTO_INCREMENT,
   User_first_name VARCHAR(50),
   User_last_name VARCHAR(50),
   Username VARCHAR(50),
   User_email_address VARCHAR(150),
-  User_password VARCHAR(150)
+  User_password VARCHAR(150),
+  PRIMARY KEY (User_ID)
 )";
 
 //check if the table already exists

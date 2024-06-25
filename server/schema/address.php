@@ -17,11 +17,12 @@ if ($connection->connect_error) {
 $table_name = 'Address';
 
 $sql = "CREATE TABLE $table_name (
-  Address_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Address_ID INT(6) NOT NULL AUTO_INCREMENT,
   Address_number INT(10),
   Address VARCHAR(150),
   City VARCHAR(50),
-  Zip_code INT(15)
+  Zip_code INT(15),
+  PRIMARY KEY (Address_ID)
 )";
 
 

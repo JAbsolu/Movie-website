@@ -17,10 +17,11 @@ if ($connection->connect_error) {
 $table_name = 'Cinema';
 
 $sql = "CREATE TABLE $table_name (
-  Cinema_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Cinema_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Cinema_name VARCHAR(50) NOT NULL UNIQUE,
   Location_ID INT,
-  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID)
+  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID),
+  PRIMARY KEY (Cinema_ID)
 )";
 
 

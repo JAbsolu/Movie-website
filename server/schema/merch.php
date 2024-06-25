@@ -17,13 +17,14 @@ if ($connection->connect_error) {
 $table_name = 'Merch';
 
 $sql = "CREATE TABLE $table_name (
-  Merch_ID INT AUTO_INCREMENT PRIMARY KEY,
+  Merch_ID INT(6) NOT NULL AUTO_INCREMENT, 
   Merch_name VARCHAR(70),
   Merch_price INT,
   Merch_type INT,
   Stock INT(5),
   Merch_size ENUM('XL', 'L', 'M', 'S', 'XS'),
-  Address_Color ENUM('Rd', 'Bl', 'Grn', 'Ylw')
+  Address_Color ENUM('Rd', 'Bl', 'Grn', 'Ylw'),
+  PRIMARY KEY (Merch_ID)
 )";
 
 //check if the table already exists
