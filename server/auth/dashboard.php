@@ -125,8 +125,197 @@ function getTables($table, $connection) {
             </div>
         </div>
         <div class="card-body">
-                <form id="dynamicForm" style="display:none;">
-                    <!-- Dynamic form content will be inserted here based on the selected table -->
+            <!-- ADDRESS FORM -->
+                <form id='address_form' method='post' action='../insert-data/insert_address.php' class='d-block'>
+                    <div class='form-group'>
+                        <label for='addressNumber'>Address Number</label>
+                        <input type='text' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='address'>Address</label>
+                        <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='city'>City</label>
+                        <input type='text' class='form-control' id='city' name='city' placeholder='Enter city' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='zipCode'>Zip Code</label>
+                        <input type='text' class='form-control' id='zipCode' name='zipCode' placeholder='Enter zip code' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Address</button>
+                </form>
+                <!-- Cinema form -->
+                <form id='cinema_form' method='post' action='../insert-data/insert_cinema.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='cinemaName'>Cinema Name</label>
+                        <input type='text' class='form-control' id='cinemaName' name='cinemaName' placeholder='Enter cinema name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='locationId'>Location ID</label>
+                        <input type='number' class='form-control' id='locationId' name='locationId' placeholder='Enter location ID' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Cinema</button>
+                </form>
+                <!-- Customer FOrm -->
+                <form id='customer_form' method='post' action='../insert-data/insert_customer.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='username'>Username</label>
+                        <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='email'>Email Address</label>
+                        <input type='email' class='form-control' id='email' name='email' placeholder='Enter email address' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='firstName'>First Name</label>
+                        <input type='text' class='form-control' id='firstName' name='firstName' placeholder='Enter first name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='lastName'>Last Name</label>
+                        <input type='text' class='form-control' id='lastName' name='lastName' placeholder='Enter last name' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Customer</button>
+                </form>
+                <!-- FOOD FORM -->
+                <form id='food_form' method='post' action='../insert-data/insert_food.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='foodName'>Food Name</label>
+                        <input type='text' class='form-control' id='foodName' name='foodName' placeholder='Enter food name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='price'>Price</label>
+                        <input type='number' class='form-control' id='price' name='price' placeholder='Enter price' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Food</button>
+                </form>
+                <!-- GIFT CARD FORM -->
+                <form id='gift_card_form' method='post' action='../insert-data/insert_giftcard.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='amount'>Amount</label>
+                        <input type='number' class='form-control' id='amount' name='amount' placeholder='Enter amount' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Gift Card</button>
+                </form>
+                <!-- LOCATION FORM -->
+                <form id='location_form' method='post' action='../insert-data/insert_address.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='address_ID'>Address ID</label>
+                        <input type='text' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Location</button>
+                </form>
+                <!-- MERCH FORM -->
+                <form id='merch_form' method='post' action='../insert-data/insert_merch.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='merchName'>Merch Name</label>
+                        <input type='text' class='form-control' id='merchName' name='merchName' placeholder='Enter merch name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='merchPrice'>Merch Price</label>
+                        <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='merchType'>Merch Type</label>
+                        <input type='text' class='form-control' id='merchType' name='merchType' placeholder='Enter merch type' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='stock'>Stock</label>
+                        <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='size'>Size</label>
+                        <input type='text' class='form-control' id='size' name='size' placeholder='Enter size'>
+                    </div>
+                    <div class='form-group'>
+                        <label for='color'>Color</label>
+                        <input type='text' class='form-control' id='color' name='color' placeholder='Enter color'>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
+                </form>
+                 <!-- MOVIE FORM -->
+                 <form id='movie_form' method='POST' action='../insert-data/insert_movie.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='movieTitle'>Title</label>
+                        <input type='text' class='form-control' id='movieTitle' name='movieTitle' placeholder='Enter movie title' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='movieGenre'>Genre</label>
+                        <input type='text' class='form-control' id='movieGenre' name='movieGenre' placeholder='Enter movie genre' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='releasedDate'>Released Date</label>
+                        <input type='date' class='form-control' id='releasedDate' name='releasedDate' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='movieDuration'>Duration (mins)</label>
+                        <input type='number' class='form-control' id='movieDuration' name='movieDuration' placeholder='Enter movie duration' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='showtime'>Showtime</label>
+                        <input type='text' class='form-control' id='showtime' name='showtime' placeholder='Enter showing times' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='description'>Description</label>
+                        <textarea class='form-control' id='description' name='description' placeholder='Enter movie description' required></textarea>
+                    </div>
+                    <div class='form-group'>
+                        <label for='language'>Language</label>
+                        <input type='text' class='form-control' id='language' name='language' placeholder='Enter movie language' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='fileToUpload'>Select image to upload:</label><br>
+                        <input type='file' name='fileToUpload' id='fileToUpload'>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button>
+                </form>
+                <!-- AUDITORIUM FORM -->
+                <form id='movie_room_form' method='post' action='../insert-data/insert_movie_room.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='capacity'>Capacity</label>
+                        <input type='text' class='form-control' id='capacity' name='capacity' placeholder='Enter capacity' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='available'>Available?</label>
+                        <input type='text' class='form-control' id='available' name='available' placeholder='Enter available' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='cinemaID'>Cinema ID</label>
+                        <input type='text' class='form-control' id='cinemaID' name='cinemaID' placeholder='Enter cinema ID' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add</button>
+                </form>
+                <!-- ROLE -->
+                <form id='role_form' method='post' action='../insert-data/insert_role.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='role'>Role</label>
+                        <input type='text' class='form-control' id='role' name='role' placeholder='Enter role' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add role</button>
+                </form>
+                <!-- USER -->
+                <form id='user_form' method='post' action='../insert-data/insert_user.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='first_name'>First name</label>
+                        <input type='text' class='form-control' id='first_name' name='first_name' placeholder='Enter first name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='last_name'>Last name</label>
+                        <input type='text' class='form-control' id='last_name' name='last_name' placeholder='Enter last name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='username'>Username</label>
+                        <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='email_address'>Email address</label>
+                        <input type='text' class='form-control' id='email_address' name='email_address' placeholder='Enter email address' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='password'>Password</label>
+                        <input type='text' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add user</button>
                 </form>
             </div>
 
@@ -159,6 +348,7 @@ function getTables($table, $connection) {
                 }
                 echo " </tr></thead><tbody id='TableBody'></tbody></table>";
             }
+            // Display movies
             $sql = "SELECT * FROM Movie";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -192,258 +382,6 @@ function getTables($table, $connection) {
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const tableList = document.querySelector('.table_list');
-            let tables = document.querySelectorAll('.table-btn');
-            const dynamicForm = document.querySelector('#dynamicForm');
-
-            tables.forEach((table) => {
-                table.addEventListener('click', function() {
-                    const tableName = table.getAttribute('data-table');
-                    sessionStorage.setItem('Current_table', `Manage Table: ${tableName}`);
-                    tableList.textContent = `Manage Table: ${tableName}`;
-                    
-                    // Show the form
-                    dynamicForm.style.display = 'block';
-
-                    // Clear existing form content
-                    dynamicForm.innerHTML = '';
-
-                    // Add form fields based on table name
-                    if (tableName === 'Cinema') {
-                        dynamicForm.innerHTML = `
-                            <form id='cinemaForm' method='post' action='insert_cinema.php'>
-                                <div class='form-group'>
-                                    <label for='cinemaName'>Cinema Name</label>
-                                    <input type='text' class='form-control' id='cinemaName' name='cinemaName' placeholder='Enter cinema name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='password'>Password</label>
-                                    <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='locationId'>Location ID</label>
-                                    <input type='number' class='form-control' id='locationId' name='locationId' placeholder='Enter location ID' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Cinema</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Movie') {
-                        dynamicForm.innerHTML = `
-                            <form id='movieForm' method='post' action='insert_movie.php'>
-                                <div class='form-group'>
-                                    <label for='movieTitle'>Title</label>
-                                    <input type='text' class='form-control' id='movieTitle' name='movieTitle' placeholder='Enter movie title' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='movieGenre'>Genre</label>
-                                    <input type='text' class='form-control' id='movieGenre' name='movieGenre' placeholder='Enter movie genre' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='releasedDate'>Released Date</label>
-                                    <input type='date' class='form-control' id='releasedDate' name='releasedDate' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='movieDuration'>Duration (mins)</label>
-                                    <input type='number' class='form-control' id='movieDuration' name='movieDuration' placeholder='Enter movie duration' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='showtime'>Showtime</label>
-                                    <input type='text' class='form-control' id='showtime' name='showtime' placeholder='Enter showing times' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='description'>Description</label>
-                                    <textarea class='form-control' id='description' name='description' placeholder='Enter movie description' required></textarea>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='language'>Language</label>
-                                    <input type='text' class='form-control' id='language' name='language' placeholder='Enter movie language' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='fileToUpload'>Select image to upload:</label><br>
-                                    <input type='file' name='fileToUpload' id='fileToUpload'>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Address') {
-                        dynamicForm.innerHTML = `
-                            <form id='addressForm' method='post' action='insert_address.php'>
-                                <div class='form-group'>
-                                    <label for='addressNumber'>Address Number</label>
-                                    <input type='text' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='address'>Address</label>
-                                    <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='city'>City</label>
-                                    <input type='text' class='form-control' id='city' name='city' placeholder='Enter city' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='zipCode'>Zip Code</label>
-                                    <input type='text' class='form-control' id='zipCode' name='zipCode' placeholder='Enter zip code' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Address</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Customer') {
-                        dynamicForm.innerHTML = `
-                            <form id='customerForm' method='post' action='insert_customer.php'>
-                                <div class='form-group'>
-                                    <label for='username'>Username</label>
-                                    <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='password'>Password</label>
-                                    <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='email'>Email Address</label>
-                                    <input type='email' class='form-control' id='email' name='email' placeholder='Enter email address' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='firstName'>First Name</label>
-                                    <input type='text' class='form-control' id='firstName' name='firstName' placeholder='Enter first name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='lastName'>Last Name</label>
-                                    <input type='text' class='form-control' id='lastName' name='lastName' placeholder='Enter last name' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Customer</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Food') {
-                        dynamicForm.innerHTML = `
-                            <form id='foodForm' method='post' action='insert_food.php'>
-                                <div class='form-group'>
-                                    <label for='foodName'>Food Name</label>
-                                    <input type='text' class='form-control' id='foodName' name='foodName' placeholder='Enter food name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='price'>Price</label>
-                                    <input type='number' class='form-control' id='price' name='price' placeholder='Enter price' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Food</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Gift_Card') {
-                        dynamicForm.innerHTML = `
-                            <form id='giftCardForm' method='post' action='insert_giftcard.php'>
-                                <div class='form-group'>
-                                    <label for='amount'>Amount</label>
-                                    <input type='number' class='form-control' id='amount' name='amount' placeholder='Enter amount' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Gift Card</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Merch') {
-                        dynamicForm.innerHTML = `
-                            <form id='merchForm' method='post' action='insert_merch.php'>
-                                <div class='form-group'>
-                                    <label for='merchName'>Merch Name</label>
-                                    <input type='text' class='form-control' id='merchName' name='merchName' placeholder='Enter merch name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='merchPrice'>Merch Price</label>
-                                    <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='merchType'>Merch Type</label>
-                                    <input type='text' class='form-control' id='merchType' name='merchType' placeholder='Enter merch type' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='stock'>Stock</label>
-                                    <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='size'>Size</label>
-                                    <input type='text' class='form-control' id='size' name='size' placeholder='Enter size'>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='color'>Color</label>
-                                    <input type='text' class='form-control' id='color' name='color' placeholder='Enter color'>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Movie_Room') {
-                        dynamicForm.innerHTML = `
-                            <form id='movieRoomForm' method='post' action='insert_movie_room.php'>
-                                <div class='form-group'>
-                                    <label for='capacity'>Capacity</label>
-                                    <input type='text' class='form-control' id='capacity' name='capacity' placeholder='Enter capacity' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='available'>Available?</label>
-                                    <input type='text' class='form-control' id='available' name='available' placeholder='Enter available' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='cinemaID'>Cinema ID</label>
-                                    <input type='text' class='form-control' id='cinemaID' name='cinemaID' placeholder='Enter cinema ID' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Location') {
-                        dynamicForm.innerHTML = `
-                            <form id='LocationForm' method='post' action='insert_address.php'>
-                                <div class='form-group'>
-                                    <label for='address_ID'>Address ID</label>
-                                    <input type='text' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add Location</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'Role') {
-                        dynamicForm.innerHTML = `
-                            <form id='roleForm' method='post' action='insert_role.php'>
-                                <div class='form-group'>
-                                    <label for='role'>Role</label>
-                                    <input type='text' class='form-control' id='role' name='role' placeholder='Enter role' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add role</button>
-                            </form>
-                        `;
-                    } else if (tableName === 'User') {
-                        dynamicForm.innerHTML = `
-                            <form id='userForm' method='post' action='insert_user.php'>
-                                <div class='form-group'>
-                                    <label for='first_name'>First name</label>
-                                    <input type='text' class='form-control' id='first_name' name='first_name' placeholder='Enter first name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='last_name'>Last name</label>
-                                    <input type='text' class='form-control' id='last_name' name='last_name' placeholder='Enter last name' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='username'>Username</label>
-                                    <input type='text' class='form-control' id='username' name='username' placeholder='Enter username' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='email_address'>Email address</label>
-                                    <input type='text' class='form-control' id='email_address' name='email_address' placeholder='Enter email address' required>
-                                </div>
-                                <div class='form-group'>
-                                    <label for='password'>Password</label>
-                                    <input type='text' class='form-control' id='password' name='password' placeholder='Enter password' required>
-                                </div>
-                                <button type='submit' class='mt-2 btn btn-primary'>Add user</button>
-                            </form>
-                        `;
-                    }
-                });
-            });
-            // Load current table on DOM loaded
-            const currentTable = sessionStorage.getItem('Current_table');
-            if (currentTable) {
-                tableList.textContent = currentTable;
-                dynamicForm.style.display = 'block';
-            }
-        });
-    </script>
     <?php $conn->close() ?>
 </body>
 </html>
