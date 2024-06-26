@@ -1,9 +1,4 @@
-<?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-include "../server/connect/config.php";
-?>
+<?php include "server/connect/config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,10 +27,10 @@ include "../server/connect/config.php";
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="menu-item">
-                    <img src="img/popcorn_150x150.png" alt="Popcorn" class="menu-img">
+                    <img src="img/popcorn.jpg" alt="Popcorn" class="menu-img">
                     <h3>Popcorn</h3>
                     <p>$5.00</p>
-                    <form action="/Movie/buy.php" method="POST">
+                    <form action="buy.php" method="POST">
                         <input type="hidden" name="item" value="Popcorn">
                         <input type="hidden" name="price" value="5.00">
                         <button type="submit">Buy</button>
@@ -44,10 +39,10 @@ include "../server/connect/config.php";
             </div>
             <div class="col-md-4">
                 <div class="menu-item">
-                    <img src="img/nachos.jpg" alt="Nachos" class="menu-img">
+                    <img src="img/Nacho_Cheese.webp" alt="Nachos" class="menu-img">
                     <h3>Nachos</h3>
                     <p>$4.50</p>
-                    <form action="/Movie/buy.php" method="POST">
+                    <form action="buy.php" method="POST">
                         <input type="hidden" name="item" value="Nachos">
                         <input type="hidden" name="price" value="4.50">
                         <button type="submit">Buy</button>
@@ -62,10 +57,10 @@ include "../server/connect/config.php";
         <div class="row mb-4">
             <div class="col-md-4">
                 <div class="menu-item">
-                    <img src="img/soda.jpg" alt="Soda" class="menu-img">
+                    <img src="img/Soda.jpg" alt="Soda" class="menu-img">
                     <h3>Soda</h3>
                     <p>$3.00</p>
-                    <form action="/Movie/buy.php" method="POST">
+                    <form action="buy.php" method="POST">
                         <input type="hidden" name="item" value="Soda">
                         <input type="hidden" name="price" value="3.00">
                         <button type="submit">Buy</button>

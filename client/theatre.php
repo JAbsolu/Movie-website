@@ -17,11 +17,27 @@
 <body>
     <?php include "includes/nav.php"; ?>
     <div class="container">
-        <h1>Theatre Details</h1>
+        <h1 class="text-center">Theatre Details</h1>
         <?php
         if (isset($_GET['name'])) {
             $theatre_name = str_replace('-', ' ', urldecode($_GET['name']));
-            echo "<h2>$theatre_name</h2>";
+            print ("
+            <!-- Movie Container -->
+            <h2 class='section-title mt-5 mb-4'>Now Showcasing at $theatre_name</h2>
+            <span class='bg-dark' width='100px'></span>
+             <div class='container'>
+                <div class='row d-flex flex-row justify-content-start'>
+                    <div class='col-sm'>
+                        <img src='img/Bad Boys.png' alt='Movie Poster 1' class='poster-img' width='250px'>
+                        <div class='mt-2'>
+                            <p class='p-0 m-0'>Bad Boys: Ride or Die</p>
+                            <p class='p-0 m-0'>1 HR 55 MIN</p>
+                            <p class=''>R</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+            ");
             // Here you can add more details about the theatre from the database
         } else {
             echo "<p>No theatre selected.</p>";

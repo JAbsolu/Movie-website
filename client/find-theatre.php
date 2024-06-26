@@ -37,7 +37,7 @@
                 'Nashville, TN', 'New Brunswick', 'Rockford', 'Salt Lake City', 'San Antonio', 'San Diego', 
                 'San Francisco', 'San Jose', 'Saratoga Springs', 'Savannah, GA', 'Seattle / Tacoma', 
                 'Sherman, TX', 'Sioux City, IA', 'South Bend', 'Spokane', 'Springfield - IL', 
-                'Springfield - MO', 'St. Louis'
+                'Springfield - MO', 'St. Louis' 
             ];
             foreach ($theatres as $theatre) {
                 // Replace spaces and commas with URL-friendly dashes

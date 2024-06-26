@@ -19,7 +19,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background: #4dbf00;">
             <li><a class="dropdown-item" href="/Movie/client/food-and-drinks.php">Food and Drinks</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Shop Merch</a></li>
+            <li><a class="dropdown-item" href="/Movie/client/shop.php">Shop Merch</a></li>
           </ul>
         </li>
       </ul>
