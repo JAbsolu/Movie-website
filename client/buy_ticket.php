@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST['title'];
@@ -50,3 +51,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
+=======
+>>>>>>> 4670b09 (update)
