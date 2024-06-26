@@ -56,15 +56,15 @@
     <!-- Movie Container -->
     <h2 class="section-title mt-5 mb-4">Now Showcasing at Flakes</h2>
     <span class="bg-dark" width="100px"></span>
-    <div class="container">
+    <form class="container" action="client/buy_ticket.php">
         <div class="row d-flex flex-row justify-content-start">
             <div class="col-sm">
                 <img src="client/img/Bad Boys.png" alt="Movie Poster 1" class="poster-img" width="250px">
                 <div class="mt-2">
-                    <p class="p-0 m-0">Bad Boys: Ride or Die</p>
-                    <p class="p-0 m-0">1 HR 55 MIN</p>
-                    <p class="">R</p>
-                    <a href="" class="btn btn-danger mt-2">Buy Ticket</a>
+                    <p class="p-0 m-0" name="title">Bad Boys: Ride or Die</p>
+                    <p class="p-0 m-0" name="duration">1 HR 55 MIN</p>
+                    <p class="" name="rating">R</p>
+                    <input type="submit" value="Buy Ticket" class="btn btn-danger mt-2" name="buy"/>
                 </div>
             </div>
             <div class="col-sm">
@@ -73,7 +73,7 @@
                     <p class="p-0 m-0">Haikyu!! The Dumpster Battle</p>
                     <p class="p-0 m-0">1 HR 25 MIN</p>
                     <p class="">PG</p>
-                    <a href="" class="btn btn-danger mt-2">Buy Ticket</a>
+                    <a href="client/buy_ticket.php" class="btn btn-danger mt-2">Buy Ticket</a>
                 </div>
             </div>
             <div class="col-sm">
@@ -82,7 +82,7 @@
                     <p class="p-0 m-0">Furiosa: A Mad Max Saga</p>
                     <p class="p-0 m-0">2 HR 30 MIN</p>
                     <p class="">PG-13</p>
-                    <a href="" class="btn btn-danger mt-2">Buy Ticket</a>
+                    <a href="client/buy_ticket.php" class="btn btn-danger mt-2">Buy Ticket</a>
 
 
                 </div>
@@ -93,7 +93,7 @@
                     <p class="p-0 m-0">The Garfield Movie</p>
                     <p class="p-0 m-0">1 HR 40 MIN</p>
                     <p class="">PG-13</p>
-                    <a href="" class="btn btn-danger mt-2">Buy Ticket</a>
+                    <a href="client/buy_ticket.php" class="btn btn-danger mt-2">Buy Ticket</a>
                 </div>
             </div>
         </div>
