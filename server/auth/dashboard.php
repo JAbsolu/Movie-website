@@ -129,7 +129,7 @@ function getTables($table, $connection) {
                 <form id='address_form' method='post' action='../insert-data/insert_address.php' class='d-block'>
                     <div class='form-group'>
                         <label for='addressNumber'>Address Number</label>
-                        <input type='text' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
+                        <input type='number' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
                     </div>
                     <div class='form-group'>
                         <label for='address'>Address</label>

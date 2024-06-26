@@ -20,8 +20,8 @@ $sql = "CREATE TABLE $table_name (
   Address_ID INT(6) NOT NULL AUTO_INCREMENT,
   Address_number INT(10),
   Address VARCHAR(150),
-  City VARCHAR(50),
-  Zip_code INT(15),
+  City VARCHAR(150),
+  Zip_code INT(50),
   PRIMARY KEY (Address_ID)
 )";
 

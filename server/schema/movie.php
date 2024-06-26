@@ -25,7 +25,7 @@ $sql = "CREATE TABLE $table_name (
   Showtime VARCHAR(100),
   Description VARCHAR(3000),
   Language VARCHAR(100),
-  ImageURL VARCHAR(2000),
+  ImageURL LONGBLOB NOT NULL,
   PRIMARY KEY (MovieID)
 )";
 
