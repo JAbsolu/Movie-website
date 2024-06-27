@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // include config, this php file will be called in the dbconnect file
-include "config.php";
+include "../connect/config.php";
 
 // establish connection to db
 $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
@@ -25,7 +25,7 @@ $sql = "CREATE TABLE $table_name (
   Showtime VARCHAR(100),
   Description VARCHAR(3000),
   Language VARCHAR(100),
-  ImageURL LONGBLOB NOT NULL,
+  ImageURL VARCHAR(100) NOT NULL,
   PRIMARY KEY (MovieID)
 )";
 

@@ -128,10 +128,6 @@ function getTables($table, $connection) {
             <!-- ADDRESS FORM -->
                 <form id='address_form' method='post' action='../insert-data/insert_address.php' class='d-block'>
                     <div class='form-group'>
-                        <label for='addressNumber'>Address Number</label>
-                        <input type='number' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
-                    </div>
-                    <div class='form-group'>
                         <label for='address'>Address</label>
                         <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
                     </div>
@@ -177,6 +173,30 @@ function getTables($table, $connection) {
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add Customer</button>
                 </form>
+                <!-- Employee FOrm -->
+                <form id='employee_form' method='post' action='../insert-data/insert_employee.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='firstName'>First Name</label>
+                        <input type='text' class='form-control' id='firstName' name='firstName' placeholder='Enter first name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='lastName'>Last Name</label>
+                        <input type='text' class='form-control' id='lastName' name='lastName' placeholder='Enter last name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='email'>Email Address</label>
+                        <input type='email' class='form-control' id='email' name='email' placeholder='Enter email address' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='role_id'>Role ID</label>
+                        <input type='number' class='form-control' id='role_id' name='role_id' placeholder='Enter role id' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='location_id'>Location ID</label>
+                        <input type='number' class='form-control' id='location_id' name='location_id' placeholder='Enter location id' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Employee</button>
+                </form>
                 <!-- FOOD FORM -->
                 <form id='food_form' method='post' action='../insert-data/insert_food.php' class='d-none'>
                     <div class='form-group'>
@@ -198,10 +218,10 @@ function getTables($table, $connection) {
                     <button type='submit' class='mt-2 btn btn-primary'>Add Gift Card</button>
                 </form>
                 <!-- LOCATION FORM -->
-                <form id='location_form' method='post' action='../insert-data/insert_address.php' class='d-none'>
+                <form id='location_form' method='post' action='../insert-data/insert_location.php' class='d-none'>
                     <div class='form-group'>
                         <label for='address_ID'>Address ID</label>
-                        <input type='text' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
+                        <input type='number' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add Location</button>
                 </form>
@@ -213,7 +233,7 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='merchPrice'>Merch Price</label>
-                        <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
+                        <input type='number' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
                     </div>
                     <div class='form-group'>
                         <label for='merchType'>Merch Type</label>
@@ -221,7 +241,7 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='stock'>Stock</label>
-                        <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
+                        <input type='number' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
                     </div>
                     <div class='form-group'>
                         <label for='size'>Size</label>
@@ -234,7 +254,8 @@ function getTables($table, $connection) {
                     <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
                 </form>
                  <!-- MOVIE FORM -->
-                 <form id='movie_form' method='POST' action='../insert-data/insert_movie.php' class='d-none'>
+                 <form id='movie_form' method='POST' action='../insert-data/insert_movie.php' class='d-none' enctype="multipart/form-data">
+                    <input type="text" value='submit' name='submit' hidden>
                     <div class='form-group'>
                         <label for='movieTitle'>Title</label>
                         <input type='text' class='form-control' id='movieTitle' name='movieTitle' placeholder='Enter movie title' required>
@@ -267,7 +288,8 @@ function getTables($table, $connection) {
                         <label for='fileToUpload'>Select image to upload:</label><br>
                         <input type='file' name='fileToUpload' id='fileToUpload'>
                     </div>
-                    <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button>
+                    <!-- <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button> -->
+                    <input type="submit" value='Add movie' name="submit" class='mt-2 btn btn-primary'>
                 </form>
                 <!-- AUDITORIUM FORM -->
                 <form id='movie_room_form' method='post' action='../insert-data/insert_movie_room.php' class='d-none'>
@@ -313,22 +335,105 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='password'>Password</label>
-                        <input type='text' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                        <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add user</button>
                 </form>
             </div>
 
         <?php
+            // Location
+            $sql = "SELECT * FROM Location";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+            echo "<table id='location' class='mt-4 mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col' class='bg-dark text-light'>Location ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
+                while ($row = $result->fetch_assoc()) {
+                    $location_id = $row['Location_ID'];
+                    
+                    echo "<tr>";
+                    echo "<td scope='col' name='location_id'>$location_id</td>";
+                    echo "<td scope='col'>
+                        <a href='../update-data/update_address.php' type='submit' name='edit' class='text-primary text-decoration-none'> Update </a>
+                        <a href='../delete-data/delete_address.php' type='submit' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                    </td>";
+                    echo "</tr>";
+                }
+            }
+
+            // Address
+            $sql = "SELECT * FROM Address";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+            echo "<table id='address_table' class='mt-4 mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col' class='bg-dark text-light'>Address ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Address</th>";
+                echo "<th scope='col' class='bg-dark text-light'>City</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Zip Code date</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
+                while ($row = $result->fetch_assoc()) {
+                    $Address_ID = $row['Address_ID'];
+                    $address = $row["Address"];
+                    $city = $row["City"];
+                    $zipCode = $row["Zip_Code"];
+                    // $user_password = $row['User_password'];
+                    
+
+                    echo "<tr>";
+                    echo "<td scope='col' name='address_id'>$Address_ID</td>";
+                    echo "<td scope='col' name='address'>$address</td>";
+                    echo "<td scope='col' name='city'>$city</td>";
+                    echo "<td scope='col' name='zipcode'>$zipCode</td>";
+                    echo "<td scope='col'>
+                        <a href='../update-data/update_address.php' type='submit' name='edit' class='text-primary text-decoration-none'> Update </a>
+                        <a href='../delete-data/delete_address.php' type='submit' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                    </td>";
+                    echo "</tr>";
+                }
+            }
+
+            // Cinema
+            $sql = "SELECT * FROM Cinema";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+            echo "<table id='address_table' class='mt-4 mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col' class='bg-dark text-light'>Cinema ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Cinema Name</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Location ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>------------------------------</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
+                while ($row = $result->fetch_assoc()) {
+                    $cinema_id = $row['Cinema_ID'];
+                    $cinema_name = $row["Cinema_name"];
+                    $location_id = $row["Location_ID"];
+                    // $user_password = $row['User_password'];
+                    
+
+                    echo "<tr>";
+                    echo "<td scope='col' name='cinema_id'>$cinema_id</td>";
+                    echo "<td scope='col' name='cinema_name'>$cinema_name</td>";
+                    echo "<td scope='col' name='location_id'>$location_id</td>";
+                    echo "<td scope='col' name='location_id'>------------------------------</td>";
+                    echo "<td scope='col'>
+                        <a href='../update-data/update_address.php' type='submit' name='edit' class='text-primary text-decoration-none'> Update </a>
+                        <a href='../delete-data/delete_address.php' type='submit' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                    </td>";
+                    echo "</tr>";
+                }
+            }
+
+            //User table data
             $sql = "SELECT * FROM User";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-            echo "<table class='mb-5 table table-striped'><thead> <tr>";
-                echo "<th scope='col'>User ID</th>";
-                echo "<th scope='col'>First name</th>";
-                echo "<th scope='col'>Last name</th>";
-                echo "<th scope='col'>Username</th>";
-                echo "<th scope='col'>User email address</th>";
+            echo "<table id='user_table' class='mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col' class='bg-dark text-light'>User ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>First name</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Last name</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Username</th>";
+                echo "<th scope='col' class='bg-dark text-light'>User email address</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
                 while ($row = $result->fetch_assoc()) {
                     $user_id = $row['User_ID'];
                     $first_name = $row['User_first_name'];
@@ -339,25 +444,31 @@ function getTables($table, $connection) {
                     
 
                     echo "<tr>";
-                    echo "<td scope='col'>$user_id</th>";
-                    echo "<td scope='col'>$first_name</th>";
-                    echo "<td scope='col'>$last_name</th>";
-                    echo "<td scope='col'>$username</th>";
-                    echo "<td scope='col'>$user_email_address</th>";
+                    echo "<td scope='col'>$user_id</td>";
+                    echo "<td scope='col'>$first_name</td>";
+                    echo "<td scope='col'>$last_name</td>";
+                    echo "<td scope='col'>$username</td>";
+                    echo "<td scope='col'>$user_email_address</td>";
+                    echo "<td scope='col'>
+                    <a href='../update-data/update_movie.php' name='edit' class='text-primary text-decoration-none'> Update </a>
+                    <a href='../delete-data/delete_movie.php' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                    </td>";
                     echo "</tr>";
                 }
                 echo " </tr></thead><tbody id='TableBody'></tbody></table>";
             }
+
             // Display movies
             $sql = "SELECT * FROM Movie";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-            echo "<table class='mt-4 mb-5 table table-striped'><thead> <tr>";
-                echo "<th scope='col'>Movie ID</th>";
-                echo "<th scope='col'>Movie Title</th>";
-                echo "<th scope='col'>Movie Genre</th>";
-                echo "<th scope='col'>Released date</th>";
-                echo "<th scope='col'>Movie Duration</th>";
+            echo "<table id='movie_table' class=' mt-4 mb-5 table table-striped'><thead> <tr>";
+                echo "<th scope='col' class='bg-dark text-light'>Movie ID</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Movie Title</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Movie Genre</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Released date</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Movie Duration</th>";
+                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
                 while ($row = $result->fetch_assoc()) {
                     $movie_id = $row['MovieID'];
                     $title = $row['Title'];
@@ -368,13 +479,18 @@ function getTables($table, $connection) {
                     
 
                     echo "<tr>";
-                    echo "<td scope='col'>$movie_id</th>";
-                    echo "<td scope='col'>$title</th>";
-                    echo "<td scope='col'>$genre</th>";
-                    echo "<td scope='col'>$released</th>";
-                    echo "<td scope='col'>$duration</th>";
+                    echo "<td scope='col' name='movie_id'>$movie_id</td>";
+                    echo "<td scope='col' name='title'>$title</td>";
+                    echo "<td scope='col' name='genre'>$genre</td>";
+                    echo "<td scope='col' name='released'>$released</td>";
+                    echo "<td scope='col' name='duration'>$duration</td>";
+                    echo "<td scope='col'>
+                        <a href='../update-data/update_movie.php' name='edit' class='text-primary text-decoration-none'> Update </a>
+                        <a href='../delete-data/delete_movie.php' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                    </td>";
                     echo "</tr>";
                 }
+
                 echo " </tr></thead><tbody id='TableBody'></tbody></table>";
             }
         ?>

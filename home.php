@@ -112,6 +112,7 @@
     <div class="swiper-pagination"></div>
     </div>
 
+    <!-- Modal Structure -->
     <div id="trailerModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
