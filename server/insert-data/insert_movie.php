@@ -36,7 +36,7 @@ if ($_FILES["fileToUpload"]["size"] > 500000) {
 }
 
  
-$allowedTypes = ["jpg", "png", "jpeg", "gif"];
+$allowedTypes = ["jpg", "png", "jpeg", "gif", ".avif"];
 if (!in_array($imageFileType, $allowedTypes)) {
     echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
     $uploadOk = 0;

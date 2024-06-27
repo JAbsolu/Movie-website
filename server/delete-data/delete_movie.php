@@ -2,36 +2,37 @@
 include "../connect/config.php";
 session_start();
 
-$error= "";
+var_dump($_POST['movie_id']);
+echo $_POST['submit'];
+echo $_POST['movie_id'];
+
+die();
+
+$error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-  $conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-
-  // Data from form
-  $movie_id = mysqli_real_escape_string($conn, $_POST["movie_id"]);
-
-  // DELETE FROM ADDRESS
-  $sql = "DELETE FROM Address WHERE $movie_id = MovieID";
+  include '../connect/connect_to_db.php';
+  
+  $conn = get_db_connection($DB_NAME);
+  
+  // sql to delete a record
+  $sql = "DELETE FROM Movie WHERE id=?";
+  $movie_id = $_POST['movie_id'];
+   
+  
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("i", $address_id);
-
-  if ($stmt->execute()) {
-      $success = "Address $address_id deleted successfully!";
-      header("Location: ../auth/dashboard.php");
-      exit();
+  $stmt->bind_param("i", $movie_id);
+  
+  $stmt->execute();
+  
+  if ($stmt->affected_rows > 0) {
+      echo "Record deleted successfully";
   } else {
-      $error = "Error: " . $stmt->error;
+      echo "No records deleted ";
   }
-
-  // Close the statement and the database connection
+  
   $stmt->close();
   $conn->close();
-
 }
 ?>
 

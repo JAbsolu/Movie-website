@@ -342,26 +342,6 @@ function getTables($table, $connection) {
             </div>
 
         <?php
-            // Location
-            $sql = "SELECT * FROM Location";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-            echo "<table id='location' class='mt-4 mb-5 table table-striped'><thead> <tr>";
-                echo "<th scope='col' class='bg-dark text-light'>Location ID</th>";
-                echo "<th scope='col' class='bg-dark text-light'>Actions</th>";
-                while ($row = $result->fetch_assoc()) {
-                    $location_id = $row['Location_ID'];
-                    
-                    echo "<tr>";
-                    echo "<td scope='col' name='location_id'>$location_id</td>";
-                    echo "<td scope='col'>
-                        <a href='../update-data/update_address.php' type='submit' name='edit' class='text-primary text-decoration-none'> Update </a>
-                        <a href='../delete-data/delete_address.php' type='submit' name='delete' class='text-danger text-decoration-none'> Delete </a>
-                    </td>";
-                    echo "</tr>";
-                }
-            }
-
             // Address
             $sql = "SELECT * FROM Address";
             $result = $conn->query($sql);
@@ -381,7 +361,7 @@ function getTables($table, $connection) {
                     
 
                     echo "<tr>";
-                    echo "<td scope='col' name='address_id'>$Address_ID</td>";
+                    echo "<td scope='col' name='id'>$Address_ID</td>";
                     echo "<td scope='col' name='address'>$address</td>";
                     echo "<td scope='col' name='city'>$city</td>";
                     echo "<td scope='col' name='zipcode'>$zipCode</td>";
@@ -479,15 +459,18 @@ function getTables($table, $connection) {
                     
 
                     echo "<tr>";
-                    echo "<td scope='col' name='movie_id'>$movie_id</td>";
+                    echo "<form action='../delete-data/delete_movie.php' method='POST' >";
+                    echo "<input type='number' name='movie_id' value='movie id' hidden>";
+                    echo "<td scope='col' name='id'>$movie_id</td>";
                     echo "<td scope='col' name='title'>$title</td>";
                     echo "<td scope='col' name='genre'>$genre</td>";
                     echo "<td scope='col' name='released'>$released</td>";
                     echo "<td scope='col' name='duration'>$duration</td>";
                     echo "<td scope='col'>
                         <a href='../update-data/update_movie.php' name='edit' class='text-primary text-decoration-none'> Update </a>
-                        <a href='../delete-data/delete_movie.php' name='delete' class='text-danger text-decoration-none'> Delete </a>
+                        <input value='Delete' type='submit' name='delete' class='text-danger text-decoration-none'>
                     </td>";
+                    echo "</form>";
                     echo "</tr>";
                 }
 
