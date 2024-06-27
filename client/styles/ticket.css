@@ -1,0 +1,128 @@
+/* ticket.css */
+
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    margin-top: 20px;
+}
+
+.row {
+    align-items: flex-start;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+iframe {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: -100px;
+}
+
+.movie-title {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #212529; /* Ensure the movie title is dark */
+    text-align: left; /* Align the movie title to the left */
+    margin-left: 0px
+}
+
+.movie-details {
+    display: flex;
+    justify-content: flex-start;
+    color: #212529; /* Ensure the text color is dark */
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    padding: 0 20px;
+    background-color: transparent; /* Remove background color */
+}
+
+.movie-details p {
+    margin-right: 20px; /* Space out the details */
+    line-height: 1.5;
+}
+
+.movie-description {
+    padding: 0 20px;
+    color: #212529; /* Ensure the text color is dark */
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    text-align: left; /* Align the description text to the left */
+}
+
+.purchase-form .form-group label {
+    color: #212529; /* Ensure the label text color is dark */
+}
+
+.purchase-form .form-group input {
+    background-color: #fff;
+    color: #212529;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+
+.showtimes {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.showtime-location {
+    margin-bottom: 15px;
+}
+
+.showtime-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.showtime-times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.showtime-time {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.showtime-time:hover {
+    background-color: #c82333;
+}

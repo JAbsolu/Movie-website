@@ -14,7 +14,7 @@
     <script src="client/scripts/index.js" defer></script>
     <title>Find a Theatre</title>
 </head>
-<body>
+<body class="text-light" style="background: #000;">
     <?php include "includes/nav.php"; ?>
     <div class="container">
         <h1>All Theatres</h1>

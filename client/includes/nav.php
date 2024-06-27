@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/Movie/home.php" style="color: #4dbf00;">Flakes</a>
+  <a class="navbar-brand" href="/Movie/home.php" style="color: #4dbf00;">Flakes</a>
     <button class="navbar-toggler" style="background: #4dbf00;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-light"></span>
     </button>
@@ -21,6 +21,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/Movie/client/shop.php">Shop Merch</a></li>
           </ul>
+          
         </li>
       </ul>
       <form class="d-flex">

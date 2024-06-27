@@ -1,0 +1,44 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.screen {
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.seats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.seat {
+    margin: 5px;
+}
+
+.seat input {
+    display: none;
+}
+
+.seat label {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.seat input:checked + label {
+    background-color: red;
+}

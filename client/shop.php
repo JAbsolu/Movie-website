@@ -18,7 +18,7 @@
 </head>
 
 <body class="text-light" style="background: #000;">
-    <?php include "includes/nav.php"; ?>
+<?php include "includes/nav.php"; ?>
 
     <div class="container mt-5">
         <h2 class="section-title mb-4">T-Shirts</h2>
