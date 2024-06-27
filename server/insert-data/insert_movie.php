@@ -67,11 +67,11 @@ if ($uploadOk == 0) {
   $showitme = mysqli_real_escape_string($conn, $_POST['showtime']);
   $description = mysqli_real_escape_string($conn, $_POST['description']);
   $language = mysqli_real_escape_string($conn, $_POST['language']);
-  $img = mysqli_real_escape_string($conn, $_POST['fileToUpload']);
+//   $img = mysqli_real_escape_string($conn, $_POST['fileToUpload']);
 
   // INSERT INTO ADDRESS
   $sql = "INSERT INTO Movie (Title, Genre, ReleaseDate, Duration, Showtime, Description, Language, ImageURL) 
-  VALUES ('$title', '$genre', $released_date, $duration, '$showitme', '$description', '$language', '$img')";
+  VALUES ('$title', '$genre', $released_date, $duration, '$showitme', '$description', '$language', '$target_file')";
 
   if (mysqli_query($conn, $sql)) {
       $last_id = $conn->insert_id;
