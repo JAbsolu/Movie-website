@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const movie_room_form = document.getElementById("movie_room_form");
             const role_form = document.getElementById("role_form");
             const user_form = document.getElementById("user_form");
+            const employee_form = document.getElementById("employee_form");
 
             // const forms = [address_form ,cinema_form ,customer_form ,food_form ,gift_card_form ,location_form ,merch_form ,movie_form ,movie_room_form ,role_form ,user_form];
 
@@ -35,7 +36,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 'Movie' : movie_form,
                 'Movie_Room' : movie_room_form,
                 'Role' : role_form,
-                'User' : user_form
+                'User' : user_form,
+                'Employee' : employee_form
             }
 
             for (let item in forms_map) {

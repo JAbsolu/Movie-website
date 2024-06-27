@@ -128,10 +128,6 @@ function getTables($table, $connection) {
             <!-- ADDRESS FORM -->
                 <form id='address_form' method='post' action='../insert-data/insert_address.php' class='d-block'>
                     <div class='form-group'>
-                        <label for='addressNumber'>Address Number</label>
-                        <input type='number' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
-                    </div>
-                    <div class='form-group'>
                         <label for='address'>Address</label>
                         <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
                     </div>
@@ -177,6 +173,30 @@ function getTables($table, $connection) {
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add Customer</button>
                 </form>
+                <!-- Employee FOrm -->
+                <form id='employee_form' method='post' action='../insert-data/insert_employee.php' class='d-none'>
+                    <div class='form-group'>
+                        <label for='firstName'>First Name</label>
+                        <input type='text' class='form-control' id='firstName' name='firstName' placeholder='Enter first name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='lastName'>Last Name</label>
+                        <input type='text' class='form-control' id='lastName' name='lastName' placeholder='Enter last name' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='email'>Email Address</label>
+                        <input type='email' class='form-control' id='email' name='email' placeholder='Enter email address' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='role_id'>Role ID</label>
+                        <input type='number' class='form-control' id='role_id' name='role_id' placeholder='Enter role id' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='location_id'>Location ID</label>
+                        <input type='number' class='form-control' id='location_id' name='location_id' placeholder='Enter location id' required>
+                    </div>
+                    <button type='submit' class='mt-2 btn btn-primary'>Add Employee</button>
+                </form>
                 <!-- FOOD FORM -->
                 <form id='food_form' method='post' action='../insert-data/insert_food.php' class='d-none'>
                     <div class='form-group'>
@@ -198,10 +218,10 @@ function getTables($table, $connection) {
                     <button type='submit' class='mt-2 btn btn-primary'>Add Gift Card</button>
                 </form>
                 <!-- LOCATION FORM -->
-                <form id='location_form' method='post' action='../insert-data/insert_address.php' class='d-none'>
+                <form id='location_form' method='post' action='../insert-data/insert_location.php' class='d-none'>
                     <div class='form-group'>
                         <label for='address_ID'>Address ID</label>
-                        <input type='text' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
+                        <input type='number' class='form-control' id='address_ID' name='address_ID' placeholder='Enter address ID' required>
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add Location</button>
                 </form>
@@ -213,7 +233,7 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='merchPrice'>Merch Price</label>
-                        <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
+                        <input type='number' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
                     </div>
                     <div class='form-group'>
                         <label for='merchType'>Merch Type</label>
@@ -221,7 +241,7 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='stock'>Stock</label>
-                        <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
+                        <input type='number' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
                     </div>
                     <div class='form-group'>
                         <label for='size'>Size</label>
@@ -234,7 +254,8 @@ function getTables($table, $connection) {
                     <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
                 </form>
                  <!-- MOVIE FORM -->
-                 <form id='movie_form' method='POST' action='../insert-data/insert_movie.php' class='d-none'>
+                 <form id='movie_form' method='POST' action='../insert-data/insert_movie.php' class='d-none' enctype="multipart/form-data">
+                    <input type="text" value='submit' name='submit' hidden>
                     <div class='form-group'>
                         <label for='movieTitle'>Title</label>
                         <input type='text' class='form-control' id='movieTitle' name='movieTitle' placeholder='Enter movie title' required>
@@ -267,7 +288,8 @@ function getTables($table, $connection) {
                         <label for='fileToUpload'>Select image to upload:</label><br>
                         <input type='file' name='fileToUpload' id='fileToUpload'>
                     </div>
-                    <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button>
+                    <!-- <button type='submit' class='mt-2 btn btn-primary'>Add Movie</button> -->
+                    <input type="submit" value='Add movie' name="submit" class='mt-2 btn btn-primary'>
                 </form>
                 <!-- AUDITORIUM FORM -->
                 <form id='movie_room_form' method='post' action='../insert-data/insert_movie_room.php' class='d-none'>
@@ -313,7 +335,7 @@ function getTables($table, $connection) {
                     </div>
                     <div class='form-group'>
                         <label for='password'>Password</label>
-                        <input type='text' class='form-control' id='password' name='password' placeholder='Enter password' required>
+                        <input type='password' class='form-control' id='password' name='password' placeholder='Enter password' required>
                     </div>
                     <button type='submit' class='mt-2 btn btn-primary'>Add user</button>
                 </form>

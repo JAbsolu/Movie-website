@@ -13,13 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Data from form
-  $address = mysqli_real_escape_string($conn, $_POST["address"]);
-  $city = mysqli_real_escape_string($conn, $_POST["city"]);
-  $zipCode = mysqli_real_escape_string($conn, $_POST["zipCode"]);
+  $firstName = mysqli_real_escape_string($conn, $_POST["firstName"]);
+  $lastName = mysqli_real_escape_string($conn, $_POST["lastName"]);
+  $email_address = mysqli_real_escape_string($conn, $_POST["email"]);
+  $role_id = mysqli_real_escape_string($conn, $_POST["role_id"]);
+  $location_id = mysqli_real_escape_string($conn, $_POST["location_id"]);
 
   // INSERT INTO ADDRESS
-  $sql = "INSERT INTO Address(Address, City, Zip_code) 
-  VALUES ('$address', '$city', $zipCode)";
+  $sql = "INSERT INTO Employee (Employee_first_name, Employee_last_name, Employee_email_address, Role_ID, Location_ID) 
+  VALUES ('$firstName,' '$lastName', '$email_address', $role_id, $location_id)";
 
   if (mysqli_query($conn, $sql)) {
       $last_id = $conn->insert_id;

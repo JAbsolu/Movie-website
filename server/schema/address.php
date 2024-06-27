@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // include config, this php file will be called in the dbconnect file
-include "config.php";
+include "../connect/config.php";
 
 // establish connection to db
 $connection = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
@@ -18,10 +18,9 @@ $table_name = 'Address';
 
 $sql = "CREATE TABLE $table_name (
   Address_ID INT(6) NOT NULL AUTO_INCREMENT,
-  Address_number INT(10),
   Address VARCHAR(150),
   City VARCHAR(150),
-  Zip_code INT(50),
+  Zip_code INT(10),
   PRIMARY KEY (Address_ID)
 )";
 

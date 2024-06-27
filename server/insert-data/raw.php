@@ -1,24 +1,33 @@
 <?php
 
-$raw_file = " <form id='addressForm' method='post' action='../insert-data/insert_address.php'>
+$raw_file = "<form id='merch_form' method='post' action='../insert-data/insert_merch.php' class='d-none'>
                 <div class='form-group'>
-                    <label for='addressNumber'>Address Number</label>
-                    <input type='text' class='form-control' id='addressNumber' name='addressNumber' placeholder='Enter address number' required>
+                    <label for='merchName'>Merch Name</label>
+                    <input type='text' class='form-control' id='merchName' name='merchName' placeholder='Enter merch name' required>
                 </div>
                 <div class='form-group'>
-                    <label for='address'>Address</label>
-                    <input type='text' class='form-control' id='address' name='address' placeholder='Enter address' required>
+                    <label for='merchPrice'>Merch Price</label>
+                    <input type='text' class='form-control' id='merchPrice' name='merchPrice' placeholder='Enter merch price' required>
                 </div>
                 <div class='form-group'>
-                    <label for='city'>City</label>
-                    <input type='text' class='form-control' id='city' name='city' placeholder='Enter city' required>
+                    <label for='merchType'>Merch Type</label>
+                    <input type='text' class='form-control' id='merchType' name='merchType' placeholder='Enter merch type' required>
                 </div>
                 <div class='form-group'>
-                    <label for='zipCode'>Zip Code</label>
-                    <input type='text' class='form-control' id='zipCode' name='zipCode' placeholder='Enter zip code' required>
+                    <label for='stock'>Stock</label>
+                    <input type='text' class='form-control' id='stock' name='stock' placeholder='Enter stock' required>
                 </div>
-                <button type='submit' class='mt-2 btn btn-primary'>Add Address</button>
-              </form>";
+                <div class='form-group'>
+                    <label for='size'>Size</label>
+                    <input type='text' class='form-control' id='size' name='size' placeholder='Enter size'>
+                </div>
+                <div class='form-group'>
+                    <label for='color'>Color</label>
+                    <input type='text' class='form-control' id='color' name='color' placeholder='Enter color'>
+                </div>
+                <button type='submit' class='mt-2 btn btn-primary'>Add Merch</button>
+            </form>
+";
 
 // echo htmlspecialchars($raw_file);
 

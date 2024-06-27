@@ -13,14 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Data from form
-  $address = mysqli_real_escape_string($conn, $_POST["address"]);
-  $city = mysqli_real_escape_string($conn, $_POST["city"]);
-  $zipCode = mysqli_real_escape_string($conn, $_POST["zipCode"]);
+  $merchName = mysqli_real_escape_string($conn, $_POST["merchName"]);
+  $merchPrice = mysqli_real_escape_string($conn, $_POST["merchPrice"]);
+  $merchType = mysqli_real_escape_string($conn, $_POST["merchType"]);
+  $stock = mysqli_real_escape_string($conn, $_POST["stock"]);
+  $size = mysqli_real_escape_string($conn, $_POST["size"]);
+  $color = mysqli_real_escape_string($conn, $_POST["color"]);
 
   // INSERT INTO ADDRESS
-  $sql = "INSERT INTO Address(Address, City, Zip_code) 
-  VALUES ('$address', '$city', $zipCode)";
-
+  $sql = "INSERT INTO Merch (Merch_name, Merch_price, Merch_type, Stock, Merch_size, Address_Color) 
+  VALUES ('$merchName', $merchPrice, '$merchType', $stock, '$size', '$color')";
   if (mysqli_query($conn, $sql)) {
       $last_id = $conn->insert_id;
       $success = "Registration successful!";

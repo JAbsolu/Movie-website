@@ -13,13 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Data from form
-  $address = mysqli_real_escape_string($conn, $_POST["address"]);
-  $city = mysqli_real_escape_string($conn, $_POST["city"]);
-  $zipCode = mysqli_real_escape_string($conn, $_POST["zipCode"]);
+  $address_ID = mysqli_real_escape_string($conn, $_POST["address_ID"]);
 
   // INSERT INTO ADDRESS
-  $sql = "INSERT INTO Address(Address, City, Zip_code) 
-  VALUES ('$address', '$city', $zipCode)";
+  $sql = "INSERT INTO Location (Address_ID)
+  VALUES ($address_ID)";
 
   if (mysqli_query($conn, $sql)) {
       $last_id = $conn->insert_id;

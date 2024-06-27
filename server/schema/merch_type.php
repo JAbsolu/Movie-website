@@ -14,18 +14,12 @@ if ($connection->connect_error) {
   die("Connection failed: " . $connection->connect_error);
 }
 
-$table_name = 'Employee';
+$table_name = 'Merch_Type';
 
 $sql = "CREATE TABLE $table_name (
-  Employee_ID INT(6) NOT NULL AUTO_INCREMENT, 
-  Employee_first_name VARCHAR(50),
-  Employee_last_name VARCHAR(50),
-  Employee_email_address VARCHAR(50),
-  Role_ID INT,
-  Location_ID INT,
-  FOREIGN KEY (Role_ID) REFERENCES Role (Role_ID),
-  FOREIGN KEY (Location_ID) REFERENCES Location (Location_ID),
-  PRIMARY KEY (Employee_ID)
+  Merch_type_ID INT(6) NOT NULL AUTO_INCREMENT, 
+  Merch_type VARCHAR(100),
+  PRIMARY KEY (Merch_type_ID)
 )";
 
 //check if the table already exists
@@ -44,7 +38,7 @@ if ($result->num_rows > 0) {
     if ($connection->query($sql) === TRUE) {
       echo "Table $table_name created successfully <br>";
     } else {
-      echo "Error creating table: $table_name" . $connection->error . "<br>";
+      echo "Error creating table: $table_name -> " . $connection->error . "<br>";
     }
   }
 } else {
