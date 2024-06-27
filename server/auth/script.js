@@ -22,11 +22,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const role_form = document.getElementById("role_form");
             const user_form = document.getElementById("user_form");
             const employee_form = document.getElementById("employee_form");
-
-            // const forms = [address_form ,cinema_form ,customer_form ,food_form ,gift_card_form ,location_form ,merch_form ,movie_form ,movie_room_form ,role_form ,user_form];
+            // get table ids
+            const movie = document.getElementById("movie_table");
+            const user = document.getElementById("user_table");
+            const address = document.getElementById("address_table");
 
             let forms_map = {
-                'Address' : address_form,
+                'Address' : [address_form, address],
                 'Cinema' : cinema_form,
                 'Customer' : customer_form,
                 'Food' : food_form,
@@ -36,19 +38,49 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 'Movie' : movie_form,
                 'Movie_Room' : movie_room_form,
                 'Role' : role_form,
-                'User' : user_form,
+                'User' : [user_form, user],
                 'Employee' : employee_form
             }
 
             for (let item in forms_map) {
                 if (item !== tableName) {
-                    forms_map[item].classList.remove("d-block");
-                    forms_map[item].classList.add("d-none");
+                    forms_map[item][0].classList.remove("d-block");
+                    forms_map[item][0].classList.add("d-none");
+                    forms_map[item][1].classList.remove("d-block");
+                    forms_map[item][1].classList.add("d-none");
                 } else {
-                    forms_map[item].classList.remove("d-none");
-                    forms_map[item].classList.add("d-block");
+                    forms_map[item][0].classList.remove("d-none");
+                    forms_map[item][0].classList.add("d-block");
+                    forms_map[item][1].classList.remove("d-none");
+                    forms_map[item][1].classList.add("d-block");
                 }
             }
+
+            // let table_map = {
+            //     'Address' : address,
+            //     // 'Cinema' : cinema_form,
+            //     // 'Customer' : customer_form,
+            //     // 'Food' : food_form,
+            //     // 'Gift_Card': gift_card_form,
+            //     // 'Location' : location_form,
+            //     // 'Merch' : merch_form,
+            //     'Movie' : movie,
+            //     // 'Movie_Room' : movie_room_form,
+            //     // 'Role' : role_form,
+            //     'User' : user,
+            //     // 'Employee' : employee_form
+            // }
+
+            // for (let item in table_map) {
+            //     if (item !== tableName) {
+            //         table_map[item].classList.remove("d-block");
+            //         table_map[item].classList.add("d-none");
+            //     } else {
+            //         table_map[item].classList.remove("d-none");
+            //         table_map[item].classList.add("d-block");
+            //     }
+            // }
+
         });
 
     });
