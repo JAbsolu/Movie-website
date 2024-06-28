@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h1 class="card-title text-center text-danger">Error</h1>
                 <div class='alert bg-danger'>
                   <span class='closebtn d-block fs-2' onclick="this.parentElement.style.display='none'">&times;</span>
-                    <?php echo $error; ?>
+                    <?php echo htmlspecialchars($error); ?>
                 </div>
                 <div class="d-flex justify-content-center">
                   <a href="../auth/dashboard.php" class="text-primary">Return to Dashboard</a>
